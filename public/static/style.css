@@ -220,10 +220,14 @@ input, textarea, select {
   gap: 1.2rem;
 }
 
-.lang-toggle {
+.lang-toggle-wrap {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
+  font-family: var(--font-sans);
+}
+
+.lang-btn {
   font-family: var(--font-sans);
   font-size: 0.62rem;
   font-weight: 400;
@@ -231,46 +235,63 @@ input, textarea, select {
   text-transform: uppercase;
   color: var(--deep-olive);
   background: none;
-  border: 1px solid transparent;
+  border: none;
   cursor: pointer;
-  padding: 0.3rem 0.55rem;
-  transition: all var(--transition-fast);
+  padding: 0.3rem 0.4rem;
+  opacity: 0.38;
+  transition: opacity 0.2s ease, font-weight 0.2s ease;
   border-radius: 2px;
   white-space: nowrap;
 }
 
-.site-nav.hero-nav .lang-toggle { color: var(--warm-plaster); }
-.site-nav.hero-nav.scrolled .lang-toggle { color: var(--deep-olive); }
-.lang-toggle:hover { border-color: currentColor; }
-
-.lang-divider { opacity: 0.3; font-size: 0.5rem; }
-
-.lang-en,
-.lang-mn {
-  transition: opacity 0.22s ease, font-weight 0.22s ease;
+.lang-btn.active {
+  font-weight: 700;
+  opacity: 1;
 }
 
-/* Active language */
-html[lang="en"] .lang-toggle .lang-en  { font-weight: 600; opacity: 1; }
-html[lang="en"] .lang-toggle .lang-mn  { opacity: 0.38; }
-html[lang="mn"] .lang-toggle .lang-mn  { font-weight: 600; opacity: 1; }
-html[lang="mn"] .lang-toggle .lang-en  { opacity: 0.38; }
+.lang-btn:hover:not(.active) {
+  opacity: 0.7;
+}
+
+.lang-sep {
+  opacity: 0.25;
+  font-size: 0.5rem;
+  font-family: var(--font-sans);
+  color: var(--deep-olive);
+  user-select: none;
+}
+
+/* Hero nav colours */
+.site-nav.hero-nav .lang-btn { color: var(--warm-plaster); }
+.site-nav.hero-nav .lang-sep { color: var(--warm-plaster); }
+.site-nav.hero-nav.scrolled .lang-btn { color: var(--deep-olive); }
+.site-nav.hero-nav.scrolled .lang-sep { color: var(--deep-olive); }
 
 /* Mobile lang toggle */
-.mobile-lang-toggle {
-  margin-top: 1rem;
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--warm-plaster-dark);
-  background: none;
-  border: 1px solid rgba(210,203,193,0.25);
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.mobile-lang-wrap {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(210,203,193,0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
-.mobile-lang-toggle:hover { border-color: var(--warm-plaster); color: var(--warm-plaster); }
+
+.mobile-lang-btn {
+  font-size: 0.72rem;
+  color: var(--warm-plaster-dark);
+  opacity: 0.4;
+}
+
+.mobile-lang-btn.active {
+  color: var(--warm-plaster);
+  opacity: 1;
+  font-weight: 700;
+}
+
+.mobile-lang-wrap .lang-sep {
+  color: var(--warm-plaster-dark);
+}
 
 /* Hamburger */
 .nav-toggle {
@@ -2073,7 +2094,7 @@ html[lang="mn"] .lang-toggle .lang-en  { opacity: 0.38; }
 @media (max-width: 768px) {
   :root { --gutter: 1.5rem; --nav-height: 64px; }
 
-  .nav-links, .nav-inquiry-btn, .lang-toggle { display: none; }
+  .nav-links, .nav-inquiry-btn, .lang-toggle-wrap { display: none; }
   .nav-toggle { display: flex; }
 
   .hero-title { font-size: clamp(2.5rem, 10vw, 5rem); }

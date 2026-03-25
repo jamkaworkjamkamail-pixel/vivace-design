@@ -99,6 +99,7 @@ export const renderer = jsxRenderer(({ children, title, description }) => {
         <div id="page-transition"></div>
         <div id="scroll-progress"></div>
         {children}
+        <script src="/static/i18n.js"></script>
         <script src="/static/app.js"></script>
       </body>
     </html>
