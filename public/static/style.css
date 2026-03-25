@@ -213,6 +213,62 @@ input, textarea, select {
   border-color: var(--deep-olive);
 }
 
+/* Language Toggle */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--deep-olive);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+  position: relative;
+  white-space: nowrap;
+}
+
+.site-nav.hero-nav .lang-toggle { color: var(--warm-plaster); }
+.site-nav.hero-nav.scrolled .lang-toggle { color: var(--deep-olive); }
+
+.lang-toggle:hover {
+  border-color: currentColor;
+}
+
+.lang-toggle-sep {
+  opacity: 0.35;
+  font-size: 0.55rem;
+}
+
+.lang-toggle-en,
+.lang-toggle-mn {
+  transition: opacity 0.2s ease, font-weight 0.2s ease;
+}
+
+/* Active language highlight */
+html[lang="en"] .lang-toggle-en,
+html:not([lang="mn"]) .lang-toggle-en {
+  font-weight: 600;
+  opacity: 1;
+}
+html[lang="en"] .lang-toggle-mn,
+html:not([lang="mn"]) .lang-toggle-mn {
+  opacity: 0.4;
+}
+html[lang="mn"] .lang-toggle-mn {
+  font-weight: 600;
+  opacity: 1;
+}
+html[lang="mn"] .lang-toggle-en {
+  opacity: 0.4;
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
@@ -2014,7 +2070,7 @@ input, textarea, select {
 @media (max-width: 768px) {
   :root { --gutter: 1.5rem; --nav-height: 64px; }
 
-  .nav-links, .nav-inquiry-btn { display: none; }
+  .nav-links, .nav-inquiry-btn, .lang-toggle { display: none; }
   .nav-toggle { display: flex; }
 
   .hero-title { font-size: clamp(2.5rem, 10vw, 5rem); }

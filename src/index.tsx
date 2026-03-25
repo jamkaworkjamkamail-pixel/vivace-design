@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
-import { Nav, Footer, ProjectCard } from './components'
+import { Nav, Footer, ProjectCard, InquirySection } from './components'
 import {
   designers, projects, categories,
   getProjectsByCategory, getProjectsByDesigner,
@@ -69,15 +69,14 @@ app.get('/', (c) => {
 
         <div class="hero-scroll-cue">
           <div class="scroll-line"></div>
-          <span>Scroll</span>
+          <span data-en="Scroll" data-mn="Гүйлгэх">Scroll</span>
         </div>
       </section>
 
       {/* ── MARQUEE (Noomo-style pausing strip) ── */}
       <div class="noomo-marquee" aria-hidden="true">
         <div class="noomo-marquee-track">
-          {['Kitchen','Living Room','Master Bedroom','Office','Coffee Shop','Dental Clinic','Kids Room','Auto Mall','E-sport Center','Bathroom','Work Room',
-            'Kitchen','Living Room','Master Bedroom','Office','Coffee Shop','Dental Clinic','Kids Room','Auto Mall','E-sport Center','Bathroom','Work Room'].map((item, i) => (
+          {['Kitchen','Living Room','Master Bedroom','Office','Coffee Shop','Dental Clinic','Kids Room','Auto Mall','E-sport Center','Bathroom','Work Room'].map((item, i) => (
             <>
               <span class="noomo-marquee-item">{item}</span>
               <span class="noomo-marquee-sep"></span>
@@ -1168,86 +1167,6 @@ app.post('/api/inquiries', async (c) => {
 })
 
 /* ═══════════════════════════════════════════════════════════
-   SHARED INQUIRY SECTION COMPONENT
+   EXPORT
 ═══════════════════════════════════════════════════════════ */
-const InquirySection = () => (
-  <section class="inquiry-section section">
-    <div class="container">
-      <div class="inquiry-grid">
-        <div class="inquiry-text">
-          <div class="eyebrow reveal">Leave a Question</div>
-          <h2 class="headline-lg reveal reveal-delay-1">Let's discuss your interior project</h2>
-          <p class="body-text reveal reveal-delay-2">
-            We welcome inquiries from clients who are ready to invest in a genuinely considered interior. Share your project details and we'll respond with design guidance and next steps.
-          </p>
-          <div class="inquiry-details reveal reveal-delay-3">
-            <div class="inquiry-detail-item">
-              <span class="inquiry-detail-label">Email</span>
-              <span class="inquiry-detail-value">vivacedesign07@gmail.com</span>
-            </div>
-            <div class="inquiry-detail-item">
-              <span class="inquiry-detail-label">Phone</span>
-              <span class="inquiry-detail-value">7272 3066 · 9006 3066</span>
-            </div>
-            <div class="inquiry-detail-item">
-              <span class="inquiry-detail-label">Studio</span>
-              <span class="inquiry-detail-value">M2 Tower, 15th Floor, Suite 1509</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal reveal-delay-2">
-          <div class="inquiry-form">
-            <div class="form-title">Request a consultation</div>
-            <p class="form-subtitle">Share your project and we'll be in touch within 48 hours with design guidance.</p>
-            <form>
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="hs-name">Full Name *</label>
-                  <input type="text" id="hs-name" name="name" class="form-input" placeholder="Your name" required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="hs-phone">Phone *</label>
-                  <input type="tel" id="hs-phone" name="phone" class="form-input" placeholder="99001234" required />
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="hs-email">Email *</label>
-                <input type="email" id="hs-email" name="email" class="form-input" placeholder="your@email.com" required />
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="hs-category">Project Category</label>
-                <select id="hs-category" name="category" class="form-select">
-                  <option value="">Select a space...</option>
-                  {categories.map(cat => (
-                    <option value={cat.slug} key={cat.slug}>{cat.label}</option>
-                  ))}
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="hs-message">Your Question *</label>
-                <textarea id="hs-message" name="message" class="form-textarea" placeholder="Tell us about your project or simply what's on your mind..." required></textarea>
-              </div>
-              <p class="form-privacy">
-                Your information is kept private and used only to respond to your inquiry.
-              </p>
-              <div class="form-submit-wrap">
-                <button type="submit" class="btn-primary">
-                  Send Message <span class="btn-arrow"></span>
-                </button>
-              </div>
-            </form>
-            <div class="form-success">
-              <div class="form-success-title">Thank you — message received.</div>
-              <p class="form-success-text">
-                We will be in touch within 48 hours. We look forward to your project.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-)
-
 export default app
