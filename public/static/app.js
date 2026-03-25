@@ -256,129 +256,95 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ─────────────────────────────────────────────────────────
-     SPLIT TEXT REVEALS  — Noomo: every headline line-masks
-     Uses GSAP SplitText for precise line control
+     SPLIT TEXT REVEALS  — safe, no-break version
+     Only applies on homepage hero; inner pages use simple fade
   ───────────────────────────────────────────────────────── */
   function initSplitTextReveals() {
+    const isHome = location.pathname === '/';
+
+    // Helper: smart scroll trigger start — if element is near top of page use 'top bottom' 
+    function smartStart(el) {
+      const rect = el.getBoundingClientRect();
+      const distFromTop = rect.top + window.scrollY;
+      return distFromTop < window.innerHeight * 1.2 ? 'top bottom' : 'top 88%';
+    }
 
     // ── Eyebrow labels — slide from left
     gsap.utils.toArray('.eyebrow').forEach(el => {
       if (el.closest('.hero, #preloader')) return;
       gsap.fromTo(el,
-        { opacity: 0, x: -20 },
+        { opacity: 0, x: -16 },
         {
-          opacity: 1, x: 0, duration: 0.9, ease: 'noomoOut',
-          scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+          opacity: 1, x: 0, duration: 0.8, ease: 'noomoOut',
+          scrollTrigger: { trigger: el, start: smartStart(el), once: true }
         }
       );
     });
 
-    // ── Major headlines — SplitText line mask wipe
-    gsap.utils.toArray('.headline-xl, .headline-lg').forEach(el => {
+    // ── Major headlines
+    gsap.utils.toArray('.headline-xl, .headline-lg, .headline-md, .intro-statement').forEach(el => {
       if (el.closest('.hero, #preloader')) return;
 
-      let lines = null;
-      if (typeof VivaceSplit !== 'undefined') {
+      // Only do VivaceSplit on homepage to avoid layout breaks on inner pages
+      if (isHome && typeof VivaceSplit !== 'undefined') {
+        let lines = null;
         try {
           const split = new VivaceSplit(el, { type: 'lines', linesClass: 'reveal-line' });
           lines = split.lines;
-          lines.forEach(line => {
-            const wrapper = document.createElement('div');
-            wrapper.style.cssText = 'overflow:hidden; display:block;';
-            line.parentNode.insertBefore(wrapper, line);
-            wrapper.appendChild(line);
-            gsap.set(line, { yPercent: 110 });
-          });
-        } catch(e) { lines = null; }
-      }
-
-      if (lines && lines.length) {
-        gsap.to(lines, {
-          yPercent: 0,
-          duration: 1.15,
-          stagger: 0.12,
-          ease: 'noomo',
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true }
-        });
-      } else {
-        gsap.fromTo(el,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1, y: 0, duration: 1.1, ease: 'noomoOut',
-            scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+          if (lines && lines.length > 0) {
+            lines.forEach(line => {
+              const wrapper = document.createElement('div');
+              wrapper.style.cssText = 'overflow:hidden; display:block;';
+              line.parentNode.insertBefore(wrapper, line);
+              wrapper.appendChild(line);
+              gsap.set(line, { yPercent: 110 });
+            });
+            gsap.to(lines, {
+              yPercent: 0, duration: 1.1, stagger: 0.11, ease: 'noomo',
+              scrollTrigger: { trigger: el, start: smartStart(el), once: true }
+            });
+            return;
           }
-        );
-      }
-    });
-
-    // ── Medium headlines — simpler reveal
-    gsap.utils.toArray('.headline-md, .intro-statement, .approach-quote').forEach(el => {
-      if (el.closest('.hero, #preloader')) return;
-
-      let lines = null;
-      if (typeof VivaceSplit !== 'undefined') {
-        try {
-          const split = new VivaceSplit(el, { type: 'lines', linesClass: 'reveal-line-md' });
-          lines = split.lines;
-          lines.forEach(line => {
-            const wrapper = document.createElement('div');
-            wrapper.style.cssText = 'overflow:hidden; display:block;';
-            line.parentNode.insertBefore(wrapper, line);
-            wrapper.appendChild(line);
-            gsap.set(line, { yPercent: 108 });
-          });
         } catch(e) {}
       }
 
-      if (lines) {
-        gsap.to(lines, {
-          yPercent: 0,
-          duration: 1.0,
-          stagger: 0.09,
-          ease: 'noomo',
-          scrollTrigger: { trigger: el, start: 'top 89%', once: true }
-        });
-      } else {
-        gsap.fromTo(el,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1, y: 0, duration: 1.0, ease: 'noomoOut',
-            scrollTrigger: { trigger: el, start: 'top 89%', once: true }
-          }
-        );
-      }
+      // Simple fade-up for inner pages (reliable)
+      gsap.fromTo(el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1, y: 0, duration: 1.0, ease: 'noomoOut',
+          scrollTrigger: { trigger: el, start: smartStart(el), once: true }
+        }
+      );
     });
 
-    // ── Body text — word-by-word fade (Noomo signature)
+    // ── Body text — simple fade (word split only on homepage)
     gsap.utils.toArray('.body-text').forEach(el => {
       if (el.closest('.hero, #preloader')) return;
 
-      let words = null;
-      if (typeof VivaceSplit !== 'undefined') {
+      if (isHome && typeof VivaceSplit !== 'undefined') {
         try {
           const split = new VivaceSplit(el, { type: 'words' });
-          words = split.words;
-          gsap.set(words, { opacity: 0, y: 10 });
+          const words = split.words;
+          if (words && words.length > 0) {
+            gsap.set(words, { opacity: 0, y: 8 });
+            gsap.to(words, {
+              opacity: 1, y: 0, duration: 0.6, stagger: 0.022, ease: 'noomoOut',
+              scrollTrigger: { trigger: el, start: smartStart(el), once: true }
+            });
+            return;
+          }
         } catch(e) {}
       }
 
-      if (words) {
-        gsap.to(words, {
-          opacity: 1, y: 0,
-          duration: 0.7,
-          stagger: 0.025,
-          ease: 'noomoOut',
-          scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-        });
-      } else {
-        gsap.fromTo(el,
-          { opacity: 0, y: 20 },
-          {
-            opacity: 1, y: 0, duration: 0.9, ease: 'noomoOut',
-            scrollTrigger: { trigger: el, start: 'top 90%', once: true }
-          }
-        );
-      }
+      // Inner pages — plain fade
+      gsap.fromTo(el,
+        { opacity: 0, y: 16 },
+        {
+          opacity: 1, y: 0, duration: 0.9, ease: 'noomoOut',
+          scrollTrigger: { trigger: el, start: smartStart(el), once: true }
+        }
+      );
     });
   }
 
@@ -1285,7 +1251,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   /* ─────────────────────────────────────────────────────────
-     SCROLL REVEAL BATCH  — lightweight IntersectionObserver fallback
+     SCROLL REVEAL BATCH  — robust, handles top-of-page elements
   ───────────────────────────────────────────────────────── */
   function initScrollRevealBatch() {
     // Stats items
@@ -1294,7 +1260,7 @@ window.addEventListener('DOMContentLoaded', function () {
         { opacity: 0, y: 28 },
         { opacity: 1, y: 0, duration: 0.85, stagger: 0.12, ease: 'noomoOut' }
       ),
-      start: 'top 88%',
+      start: 'top 95%',
       once: true
     });
 
@@ -1303,25 +1269,49 @@ window.addEventListener('DOMContentLoaded', function () {
       gsap.fromTo(el,
         { scaleX: 0, transformOrigin: 'left center' },
         {
-          scaleX: 1, duration: 1.15, ease: 'noomo',
-          scrollTrigger: { trigger: el, start: 'top 90%', once: true }
+          scaleX: 1, duration: 1.1, ease: 'noomo',
+          scrollTrigger: { trigger: el, start: 'top 95%', once: true }
         }
       );
     });
 
-    // Generic .reveal elements (fallback for anything not handled by SplitText)
-    const revealObserver = new IntersectionObserver((entries) => {
+    // .reveal elements — IntersectionObserver with generous rootMargin
+    // Handles elements already in viewport on page load
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
+          // Small stagger based on position
+          const delay = parseFloat(entry.target.style.transitionDelay) || 0;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay * 1000);
+          observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
-
-    document.querySelectorAll('.reveal:not(.headline-xl):not(.headline-lg):not(.body-text):not(.eyebrow)').forEach(el => {
-      revealObserver.observe(el);
+    }, {
+      threshold: 0.05,           // trigger when 5% visible — catches near-top elements
+      rootMargin: '0px 0px 0px 0px'  // no negative margin — catch everything
     });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      // Skip if already handled by GSAP text split
+      if (el.classList.contains('headline-xl') || el.classList.contains('headline-lg') ||
+          el.classList.contains('headline-md') || el.classList.contains('body-text') ||
+          el.classList.contains('eyebrow') || el.closest('.hero, #preloader')) return;
+      observer.observe(el);
+    });
+
+    // Force-show any .reveal elements that are already in viewport right now
+    // (handles page top elements on inner pages)
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+        if (el.closest('.hero, #preloader')) return;
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight + 50) {
+          el.classList.add('visible');
+        }
+      });
+    }, 100);
   }
 
   /* ─────────────────────────────────────────────────────────
