@@ -20,7 +20,80 @@ export const renderer = jsxRenderer(({ children, title, description }) => {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+        {/* Native SplitText polyfill — line/word/char splitting without Club GSAP */}
+        <script dangerouslySetInnerHTML={{__html: `
+(function(){
+  function VivaceSplit(el, opts){
+    if(!el) return {lines:[],words:[],chars:[]};
+    opts = opts || {};
+    this.el = el;
+    this.lines = []; this.words = []; this.chars = [];
+    var types = (opts.type || 'lines').split(',').map(function(s){return s.trim();});
+    var text = el.innerHTML;
+    var self = this;
+
+    if(types.indexOf('chars') > -1 || types.indexOf('words') > -1){
+      var raw = el.textContent;
+      var html = '';
+      if(types.indexOf('chars') > -1){
+        html = raw.split('').map(function(c){
+          if(c===' ') return '<span style="display:inline-block;white-space:pre"> </span>';
+          return '<span class="vd-char" style="display:inline-block">' + c + '</span>';
+        }).join('');
+      } else {
+        html = raw.split(' ').map(function(w){
+          return '<span class="vd-word" style="display:inline-block;margin-right:.28em">' + w + '</span>';
+        }).join('');
+      }
+      el.innerHTML = html;
+      self.chars = Array.from(el.querySelectorAll('.vd-char'));
+      self.words = Array.from(el.querySelectorAll('.vd-word'));
+    }
+
+    if(types.indexOf('lines') > -1){
+      // Use range-based line detection
+      el.innerHTML = text;
+      var rawText = el.textContent;
+      var words = rawText.split(/\s+/).filter(Boolean);
+      el.innerHTML = words.map(function(w){
+        return '<span class="vd-w" style="display:inline-block;white-space:nowrap;margin-right:.28em">' + w + '</span>';
+      }).join('');
+      var spans = Array.from(el.querySelectorAll('.vd-w'));
+      var lines = [];
+      var currentLine = [];
+      var lastTop = -9999;
+      spans.forEach(function(span){
+        var top = span.getBoundingClientRect().top;
+        if(Math.abs(top - lastTop) > 4 && currentLine.length){
+          lines.push(currentLine);
+          currentLine = [];
+        }
+        currentLine.push(span);
+        lastTop = top;
+      });
+      if(currentLine.length) lines.push(currentLine);
+
+      // Wrap each line group in a container
+      el.innerHTML = '';
+      var linesClass = opts.linesClass || 'vd-line';
+      lines.forEach(function(lineSpans){
+        var lineEl = document.createElement('div');
+        lineEl.className = linesClass;
+        lineEl.style.cssText = 'display:block;';
+        lineSpans.forEach(function(s){ lineEl.appendChild(s); });
+        el.appendChild(lineEl);
+      });
+      self.lines = Array.from(el.querySelectorAll('.' + linesClass));
+    }
+    return this;
+  }
+  window.VivaceSplit = VivaceSplit;
+  // Alias so code works with both
+  if(typeof window.SplitText === 'undefined'){
+    window.SplitText = function(el, opts){ return new VivaceSplit(el, opts); };
+  }
+})();
+        `}} />
       </head>
       <body>
         <div id="page-transition"></div>

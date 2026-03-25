@@ -2640,3 +2640,538 @@ input, textarea, select {
   .ambient-strip-item { height: 40vw; }
   .door-left, .door-right { display: none; }
 }
+
+/* ============================================================
+   NOOMO MOTION SYSTEM v2 — New Components
+   Horizontal scroll · Preloader doors · H-scroll text
+   Floating labels · Enhanced pinned scroll
+   ============================================================ */
+
+/* === PRELOADER — DOOR SPLIT VERSION ======================= */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.preloader-door-left,
+.preloader-door-right {
+  position: absolute;
+  top: 0;
+  width: 50.5%;   /* slight overlap to avoid gap */
+  height: 100%;
+  background: var(--deep-olive);
+  z-index: 1;
+  will-change: transform;
+}
+
+.preloader-door-left  { left: 0; }
+.preloader-door-right { right: 0; }
+
+.preloader-logo {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  color: var(--warm-plaster);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.preloader-logo .char {
+  display: inline-block;
+}
+
+.preloader-counter {
+  position: absolute;
+  bottom: 3rem;
+  right: var(--gutter);
+  z-index: 2;
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 300;
+  color: rgba(210,203,193,0.1);
+  letter-spacing: -0.02em;
+  font-feature-settings: 'tnum';
+  pointer-events: none;
+}
+
+.preloader-progress {
+  position: absolute;
+  bottom: 4rem;
+  left: var(--gutter);
+  right: var(--gutter);
+  z-index: 2;
+  height: 1px;
+  background: rgba(133,134,102,0.2);
+  overflow: hidden;
+}
+
+.preloader-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: var(--warm-plaster);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* === SCROLL PROGRESS BAR ================================== */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--heritage-olive);
+  z-index: 2000;
+  width: 0%;
+  pointer-events: none;
+}
+
+/* === PINNED PROGRESS DOTS — enhanced ====================== */
+.pinned-dot {
+  width: 28px;
+  height: 2px;
+  background: rgba(210,203,193,0.2);
+  transition: background 0.4s ease, width 0.3s ease;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.pinned-dot.active {
+  background: var(--warm-plaster);
+  width: 40px;
+}
+
+/* === HORIZONTAL SCROLL SECTION ============================ */
+.horizontal-scroll-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--deep-olive);
+}
+
+.h-scroll-inner {
+  width: 100%;
+  overflow: hidden;
+}
+
+.h-scroll-header {
+  padding: 5rem var(--gutter) 3rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.h-scroll-header-left {}
+
+.h-scroll-eyebrow {
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--sage-stone);
+  font-family: var(--font-sans);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.h-scroll-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--sage-stone);
+}
+
+.h-scroll-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 300;
+  color: var(--warm-plaster);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.h-scroll-count {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: var(--sage-stone);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  font-feature-settings: 'tnum';
+  min-width: 80px;
+  text-align: right;
+  align-self: flex-end;
+  margin-bottom: 0.3rem;
+}
+
+/* Track holds all cards in a horizontal row */
+.h-scroll-track {
+  display: flex;
+  gap: 2px;
+  padding: 0 var(--gutter) 5rem;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Individual card */
+.h-scroll-card {
+  position: relative;
+  width: clamp(280px, 32vw, 460px);
+  flex-shrink: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.h-scroll-card-image {
+  position: relative;
+  height: clamp(360px, 50vh, 580px);
+  overflow: hidden;
+  background: var(--warm-plaster-dark);
+}
+
+.h-scroll-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.h-scroll-card:hover .h-scroll-card-image img {
+  transform: scale(1.0);
+}
+
+.h-scroll-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(34,34,23,0.75) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.h-scroll-card:hover .h-scroll-card-overlay {
+  opacity: 1;
+}
+
+.h-scroll-card-cat {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--warm-plaster);
+  background: rgba(34,34,23,0.7);
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-sans);
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.h-scroll-card-meta {
+  padding: 1.2rem 0.2rem 0;
+}
+
+.h-scroll-card-designer {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage-stone);
+  margin-bottom: 0.35rem;
+  font-family: var(--font-sans);
+}
+
+.h-card-title {
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  font-weight: 400;
+  color: var(--warm-plaster-dark);
+  line-height: 1.25;
+  transition: color 0.3s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.h-scroll-card:hover .h-card-title {
+  color: var(--warm-plaster);
+}
+
+.h-scroll-card-desc {
+  font-size: 0.78rem;
+  color: var(--sage-stone);
+  line-height: 1.65;
+  margin-top: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* First card — larger hero format */
+.h-scroll-card:first-child {
+  width: clamp(340px, 42vw, 600px);
+}
+
+.h-scroll-card:first-child .h-scroll-card-image {
+  height: clamp(420px, 60vh, 680px);
+}
+
+/* === H-SCROLL TEXT — oversized horizontal word ============ */
+.h-scroll-text-section {
+  overflow: hidden;
+  padding: 3rem 0;
+  background: var(--off-white);
+  border-top: 1px solid var(--warm-plaster-dark);
+  border-bottom: 1px solid var(--warm-plaster-dark);
+}
+
+.h-scroll-text {
+  display: block;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-size: clamp(4rem, 10vw, 12rem);
+  font-weight: 300;
+  color: var(--deep-olive);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  will-change: transform;
+  opacity: 0.06;
+  text-transform: uppercase;
+  pointer-events: none;
+  user-select: none;
+}
+
+.h-scroll-text-section.dark {
+  background: var(--deep-olive);
+  border-color: rgba(133,134,102,0.15);
+}
+
+.h-scroll-text-section.dark .h-scroll-text {
+  color: var(--warm-plaster);
+  opacity: 0.05;
+}
+
+/* === ENHANCED CATEGORY LINE =============================== */
+.category-full-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--heritage-olive);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: none; /* handled by GSAP */
+}
+
+/* === FLOATING FORM LABELS ================================= */
+.form-group {
+  position: relative;
+}
+
+.form-group .form-label {
+  position: absolute;
+  top: 1.1rem;
+  left: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage-stone);
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.3s ease,
+              font-size 0.3s ease;
+  transform-origin: left top;
+}
+
+.form-group .form-label.floating {
+  transform: translateY(-22px) scale(0.78);
+  color: var(--heritage-olive);
+}
+
+/* === GALLERY FULL-BLEED IMAGES ============================ */
+.gallery-fullbleed {
+  width: 100%;
+  height: 65vh;
+  min-height: 400px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-fullbleed img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  transition: transform 8s ease;
+}
+
+.gallery-fullbleed.in-view img {
+  transform: scale(1.0);
+}
+
+/* === NOISE TEXTURE OVERLAY — premium texture layer ======= */
+.has-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* === SECTION NUMBER LABELS ================================ */
+.section-num {
+  font-family: var(--font-serif);
+  font-size: 0.62rem;
+  font-weight: 300;
+  color: var(--sage-stone);
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* === VIEW ALL LINK — animated underline =================== */
+.view-all-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--deep-olive);
+  font-family: var(--font-sans);
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.view-all-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--heritage-olive);
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.view-all-link:hover::after { width: 100%; }
+
+.view-all-link::before {
+  content: '→';
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.view-all-link:hover::before { transform: translateX(4px); }
+
+/* === OVERSIZED QUOTE SECTION ============================== */
+.quote-section {
+  padding: var(--section-pad) 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.quote-section blockquote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 4.5rem);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--deep-olive);
+  letter-spacing: -0.02em;
+  max-width: 22ch;
+  font-style: italic;
+}
+
+.quote-section blockquote cite {
+  display: block;
+  margin-top: 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--sage-stone);
+  font-style: normal;
+}
+
+/* === BEFORE/AFTER REVEAL — advanced image reveal ========== */
+.reveal-wipe {
+  position: relative;
+  overflow: hidden;
+}
+
+.reveal-wipe-inner {
+  width: 100%;
+  height: 100%;
+  clip-path: inset(100% 0% 0% 0%);
+  transition: clip-path 1.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.reveal-wipe.visible .reveal-wipe-inner {
+  clip-path: inset(0% 0% 0% 0%);
+}
+
+/* === RESPONSIVE — new components ========================= */
+@media (max-width: 1024px) {
+  .h-scroll-track { padding: 0 var(--gutter) 3rem; }
+  .h-scroll-card { width: clamp(260px, 42vw, 380px); }
+  .h-scroll-card:first-child { width: clamp(300px, 52vw, 480px); }
+}
+
+@media (max-width: 768px) {
+  .horizontal-scroll-section {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .h-scroll-track {
+    padding: 0 var(--gutter) 2rem;
+    gap: 1rem;
+    /* On mobile: native scroll instead of GSAP */
+    transform: none !important;
+  }
+
+  .h-scroll-card {
+    width: clamp(250px, 75vw, 320px);
+    scroll-snap-align: start;
+  }
+
+  .h-scroll-card:first-child {
+    width: clamp(260px, 80vw, 340px);
+  }
+
+  .h-scroll-card-image {
+    height: 260px;
+  }
+
+  .h-scroll-card:first-child .h-scroll-card-image {
+    height: 300px;
+  }
+
+  .h-scroll-text { font-size: clamp(3rem, 12vw, 6rem); }
+
+  .preloader-counter { font-size: 2.5rem; }
+}
+
+@media (max-width: 480px) {
+  .h-scroll-card { width: 80vw; }
+  .h-scroll-card:first-child { width: 85vw; }
+}

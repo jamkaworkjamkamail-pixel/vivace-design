@@ -26,10 +26,13 @@ app.get('/', (c) => {
 
   return c.render(
     <>
-      {/* Preloader */}
+      {/* Preloader — Noomo door-split style */}
       <div id="preloader">
+        <div class="preloader-door-left"></div>
+        <div class="preloader-door-right"></div>
         <div class="preloader-logo">Vivace Design Interior</div>
-        <div class="preloader-line"></div>
+        <div class="preloader-progress"><div class="preloader-progress-fill"></div></div>
+        <div class="preloader-counter">000</div>
       </div>
 
       <Nav transparent={true} />
@@ -158,11 +161,11 @@ app.get('/', (c) => {
                   </div>
                 </div>
 
-                {/* Progress dots */}
+                {/* Progress dots — Noomo style */}
                 <div class="pinned-progress-bar">
                   <div class="pinned-progress-dots">
                     {featured.slice(0, 4).map((_, di) => (
-                      <div class={`pinned-progress-dot ${di === i ? 'active' : ''}`} key={di}></div>
+                      <button class={`pinned-dot ${di === 0 && i === 0 ? 'active' : ''}`} key={di} aria-label={`Project ${di + 1}`}></button>
                     ))}
                   </div>
                 </div>
@@ -221,6 +224,42 @@ app.get('/', (c) => {
                   <div class="category-full-arrow">View Projects</div>
                 </div>
                 <span class="category-full-num">{String(i + 1).padStart(2, '0')}</span>
+                <div class="category-full-line"></div>
+              </a>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* ── H-SCROLL TEXT STRIP ── */}
+      <div class="h-scroll-text-section dark" aria-hidden="true">
+        <span class="h-scroll-text" data-dir="ltr">Interior Design — Vivace — Ulaanbaatar — Premium Spaces — Crafted Interiors — Interior Design — Vivace</span>
+      </div>
+
+      {/* ── HORIZONTAL SCROLL — Featured Projects ── */}
+      <section class="horizontal-scroll-section">
+        <div class="h-scroll-header">
+          <div class="h-scroll-header-left">
+            <div class="h-scroll-eyebrow">Selected Works</div>
+            <h2 class="h-scroll-title">Featured <em style="font-style:italic;">Projects</em></h2>
+          </div>
+          <span class="h-scroll-count">01 / 07</span>
+        </div>
+        <div class="h-scroll-track">
+          {featured.map((project, i) => {
+            const designer = getDesignerById(project.designerId)
+            return (
+              <a href={`/projects/${project.id}`} class="h-scroll-card" key={project.id}>
+                <div class="h-scroll-card-image">
+                  <img src={project.coverImage} alt={project.title} loading={i === 0 ? 'eager' : 'lazy'} />
+                  <div class="h-scroll-card-overlay"></div>
+                  <span class="h-scroll-card-cat">{project.category}</span>
+                </div>
+                <div class="h-scroll-card-meta">
+                  <div class="h-scroll-card-designer">Designed by {designer?.name}</div>
+                  <div class="h-card-title">{project.title}</div>
+                  <p class="h-scroll-card-desc">{project.description}</p>
+                </div>
               </a>
             )
           })}
