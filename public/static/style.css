@@ -97,9 +97,7 @@ input, textarea, select {
   color: var(--warm-plaster);
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(12px);
-  animation: preloaderReveal 0.9s var(--ease-out-quart) 0.3s forwards;
+  /* opacity/transform handled by GSAP — no CSS animation conflict */
 }
 
 .preloader-line {
@@ -1865,18 +1863,8 @@ input, textarea, select {
   inset: 0;
   z-index: 9000;
   background: var(--deep-olive);
-  transform: translateY(100%);
-  pointer-events: none;
-}
-
-#page-transition.entering {
-  transform: translateY(0);
-  transition: transform 0.5s var(--ease-in-out-quart);
-}
-
-#page-transition.leaving {
-  transform: translateY(-100%);
-  transition: transform 0.5s var(--ease-in-out-quart);
+  transform: translateY(0%);  /* starts covering page — GSAP animates to -100% on entry */
+  pointer-events: all;        /* GSAP disables after entry animation */
 }
 
 /* === FEATURED MARQUEE === */
@@ -2615,25 +2603,8 @@ input, textarea, select {
 
 .ambient-strip-item:hover::after { opacity: 1; }
 
-/* === PAGE TRANSITION OVERLAY ============================== */
-#page-transition {
-  position: fixed;
-  inset: 0;
-  z-index: 9000;
-  background: var(--deep-olive);
-  transform: translateY(100%);
-  pointer-events: none;
-}
-
-#page-transition.entering {
-  transform: translateY(0);
-  transition: transform 0.48s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-#page-transition.leaving {
-  transform: translateY(-100%);
-  transition: transform 0.48s cubic-bezier(0.76, 0, 0.24, 1);
-}
+/* === PAGE TRANSITION OVERLAY (managed by GSAP) =========== */
+/* Initial state: covers page, GSAP will slide it out on load */
 
 /* === RESPONSIVE ADJUSTMENTS =============================== */
 @media (max-width: 1024px) {
