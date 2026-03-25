@@ -50,20 +50,20 @@ app.get('/', (c) => {
 
         <div class="hero-content container">
           <div class="hero-eyebrow">
-            <span>Premium Interior Design Studio</span>
+            <span data-en="Premium Interior Design Studio" data-mn="Тэргүүний Интерьер Дизайн Студи">Premium Interior Design Studio</span>
           </div>
           <h1 class="hero-title">
-            Spaces designed to live <em>beautifully</em>
+            <span data-en="Your dream space" data-mn="Таны мөрөөдлийн орон зай">Your dream space</span> <em data-en="starts here" data-mn="эндээс эхэлдэг">starts here</em>
           </h1>
-          <p class="hero-subtitle">
+          <p class="hero-subtitle" data-en="We create premium interior environments shaped with clarity, warmth, and lasting identity. Every space is a collaboration between craft and vision." data-mn="Тодорхой байдал, дулаан мэдрэмж, тогтвортой онцлогоор хийгдсэн дотоод орчинг бид бүтээдэг. Бүх орон зай бол гар урлал ба алсын харааны хамтын бүтээл юм.">
             We create premium interior environments shaped with clarity, warmth, and lasting identity.
             Every space is a collaboration between craft and vision.
           </p>
           <div class="hero-actions">
             <a href="/projects" class="btn-primary">
-              View Projects <span class="btn-arrow"></span>
+              <span data-en="View Projects" data-mn="Төслүүд үзэх">View Projects</span> <span class="btn-arrow"></span>
             </a>
-            <a href="/inquiry" class="btn-outline">Start Inquiry</a>
+            <a href="/inquiry" class="btn-outline" data-en="Start Inquiry" data-mn="Хүсэлт илгээх">Start Inquiry</a>
           </div>
         </div>
 
@@ -98,25 +98,25 @@ app.get('/', (c) => {
               <div class="intro-tag">Est. Ulaanbaatar</div>
             </div>
             <div class="intro-text-wrap">
-              <div class="eyebrow reveal">Studio Narrative</div>
-              <h2 class="intro-statement reveal reveal-delay-1">
+              <div class="eyebrow reveal" data-en="Studio Narrative" data-mn="Студийн түүх">Studio Narrative</div>
+              <h2 class="intro-statement reveal reveal-delay-1" data-en="Interior design shaped with clarity, warmth, and identity." data-mn="Тодорхой байдал, дулаан мэдрэмж, онцлогоор хийгдсэн интерьер дизайн.">
                 Interior design shaped with clarity, warmth, and identity.
               </h2>
               <div class="intro-divider reveal reveal-delay-2"></div>
-              <p class="body-text reveal reveal-delay-3">
+              <p class="body-text reveal reveal-delay-3" data-en="Vivace Design Interior is a premium interior design studio based in Ulaanbaatar. We create considered environments for residential, commercial, and hospitality clients — spaces that balance beauty with the real rhythms of daily life." data-mn="Vivace Design Interior нь Улаанбаатарт байрлах тэргүүний интерьер дизайн студи юм. Бид амьдрах, арилжааны болон зочид буудлын үйлчлүүлэгчдэд зориулсан орчинг бүтээдэг — өдөр тутмын амьдралын хэмнэлтэй уялддаг гоо зүй болон функцийн тэнцвэртэй орон зай.">
                 Vivace Design Interior is a premium interior design studio based in Ulaanbaatar.
                 We create considered environments for residential, commercial, and hospitality clients —
                 spaces that balance beauty with the real rhythms of daily life.
               </p>
               <br />
-              <p class="body-text reveal reveal-delay-4">
+              <p class="body-text reveal reveal-delay-4" data-en="Our work is driven by a deep respect for materiality, proportion, and light. We believe the best interiors are those that feel both timeless and deeply personal — environments that elevate the everyday." data-mn="Бидний ажил нь материал, хэмжээ, гэрэлд гүнзгий хүндэтгэл дээр тулгуурладаг. Хамгийн сайн интерьер бол цаг хугацааны бус бөгөөд гүнзгий хувийн мэдрэмжтэй байдаг — өдөр тутмыг өргөмжилдөг орчин гэдэгт бид итгэдэг.">
                 Our work is driven by a deep respect for materiality, proportion, and light.
                 We believe the best interiors are those that feel both timeless and deeply personal —
                 environments that elevate the everyday.
               </p>
               <br />
               <a href="/about" class="btn-outline reveal reveal-delay-5" style="margin-top: 1rem; display: inline-flex;">
-                Our Approach <span class="btn-arrow"></span>
+                <span data-en="Our Approach" data-mn="Манай арга барил">Our Approach</span> <span class="btn-arrow"></span>
               </a>
             </div>
           </div>
@@ -192,8 +192,8 @@ app.get('/', (c) => {
       {/* ── CATEGORIES — Noomo full-screen style ── */}
       <section style="background: var(--deep-olive);">
         <div style="padding: 5rem var(--gutter) 3rem; max-width: var(--max-width); margin: 0 auto;">
-          <div class="eyebrow" style="color: var(--sage-stone);">Browse</div>
-          <h2 class="headline-lg" style="color: var(--warm-plaster); margin-top: 0.5rem;">Project Categories</h2>
+          <div class="eyebrow" style="color: var(--sage-stone);" data-en="Browse" data-mn="Үзэх">Browse</div>
+          <h2 class="headline-lg" style="color: var(--warm-plaster); margin-top: 0.5rem;" data-en="Project Categories" data-mn="Төслийн ангилал">Project Categories</h2>
         </div>
         <div>
           {categories.map((cat, i) => {
@@ -220,7 +220,7 @@ app.get('/', (c) => {
                     <div class="category-full-title">{cat.label}</div>
                     <div class="category-full-title-mn">{cat.labelMn}</div>
                   </div>
-                  <div class="category-full-arrow">View Projects</div>
+                  <div class="category-full-arrow" data-en="View Projects" data-mn="Төсөл үзэх">View Projects</div>
                 </div>
                 <span class="category-full-num">{String(i + 1).padStart(2, '0')}</span>
                 <div class="category-full-line"></div>
@@ -239,8 +239,8 @@ app.get('/', (c) => {
       <section class="horizontal-scroll-section">
         <div class="h-scroll-header">
           <div class="h-scroll-header-left">
-            <div class="h-scroll-eyebrow">Selected Works</div>
-            <h2 class="h-scroll-title">Featured <em style="font-style:italic;">Projects</em></h2>
+            <div class="h-scroll-eyebrow" data-en="Selected Works" data-mn="Сонгосон бүтээлүүд">Selected Works</div>
+            <h2 class="h-scroll-title"><span data-en="Featured" data-mn="Онцлох">Featured</span> <em style="font-style:italic;" data-en="Projects" data-mn="Төслүүд">Projects</em></h2>
           </div>
           <span class="h-scroll-count">01 / 07</span>
         </div>
@@ -255,7 +255,7 @@ app.get('/', (c) => {
                   <span class="h-scroll-card-cat">{project.category}</span>
                 </div>
                 <div class="h-scroll-card-meta">
-                  <div class="h-scroll-card-designer">Designed by {designer?.name}</div>
+                  <div class="h-scroll-card-designer" data-en={`Designed by ${designer?.name}`} data-mn={`${designer?.name} зохиосон`}>Designed by {designer?.name}</div>
                   <div class="h-card-title">{project.title}</div>
                   <p class="h-scroll-card-desc">{project.description}</p>
                 </div>
@@ -270,10 +270,10 @@ app.get('/', (c) => {
         <div class="container">
           <div class="section-header">
             <div class="section-title-group">
-              <div class="eyebrow reveal">Creative Authorship</div>
-              <h2 class="headline-lg reveal reveal-delay-1">Our Designers</h2>
+              <div class="eyebrow reveal" data-en="Creative Authorship" data-mn="Бүтээлч зохиогчид">Creative Authorship</div>
+              <h2 class="headline-lg reveal reveal-delay-1" data-en="Our Designers" data-mn="Манай дизайнерууд">Our Designers</h2>
             </div>
-            <a href="/designers" class="btn-outline reveal reveal-delay-2">
+            <a href="/designers" class="btn-outline reveal reveal-delay-2" data-en="All Designers" data-mn="Бүх дизайнерууд">
               All Designers <span class="btn-arrow"></span>
             </a>
           </div>
@@ -296,7 +296,7 @@ app.get('/', (c) => {
                       <span class="specialty-tag" key={s}>{s}</span>
                     ))}
                   </div>
-                  <div class="designer-card-link">
+                  <div class="designer-card-link" data-en="View Portfolio →" data-mn="Портфолио үзэх →">
                     View Portfolio →
                   </div>
                 </a>
@@ -330,8 +330,8 @@ app.get('/', (c) => {
         <div class="container">
           <div class="section-header">
             <div class="section-title-group">
-              <div class="eyebrow reveal">How We Work</div>
-              <h2 class="headline-lg reveal reveal-delay-1">Our Design Process</h2>
+              <div class="eyebrow reveal" data-en="How We Work" data-mn="Бид хэрхэн ажилладаг">How We Work</div>
+              <h2 class="headline-lg reveal reveal-delay-1" data-en="Our Design Process" data-mn="Манай дизайны процесс">Our Design Process</h2>
             </div>
           </div>
           <div class="process-grid">
@@ -340,36 +340,46 @@ app.get('/', (c) => {
                 {
                   num: '01',
                   title: 'Discovery & Consultation',
+                  titleMn: 'Судалгаа & Зөвлөгөө',
                   body: 'We begin with a deep conversation — understanding not just what you need, but how you want to feel inside your space. We study your lifestyle, aspirations, material preferences, and the architectural context of the project.',
+                  bodyMn: 'Бид гүн ярилцлагаас эхэлдэг — зөвхөн юу хэрэгтэйг биш, орон зайдаа хэрхэн мэдрэхийг ойлгодог. Таны амьдралын хэв маяг, хүсэл тэмүүлэл, материалын уул болон архитектурын контекстийг судалдаг.',
                 },
                 {
                   num: '02',
                   title: 'Concept Development',
+                  titleMn: 'Концепц боловсруулалт',
                   body: 'Our designers develop a considered spatial and material narrative for your project. Concept boards, mood studies, and preliminary layouts are reviewed together in a collaborative session to align vision.',
+                  bodyMn: 'Манай дизайнерууд таны төслийн орон зай болон материалын тухай бодолтой түүхийг боловсруулдаг. Концепц самбар, уур амьсгалын судалгаа, урьдчилсан төлөвлөлтийг хамтарсан хуралдаанаар хянаж, алсын харааг нэгтгэдэг.',
                 },
                 {
                   num: '03',
                   title: 'Design Development',
+                  titleMn: 'Дизайн боловсруулалт',
                   body: 'With the concept confirmed, we develop detailed interior drawings, material specifications, furniture selections, lighting plans, and bespoke element designs. Every detail is considered with intention.',
+                  bodyMn: 'Концепц батлагдсаны дараа дэлгэрэнгүй дотоод зургийг, материалын тодорхойлолт, тавилгын сонголт, гэрэлтүүлгийн төлөвлөлт болон захиалагч хэлбэрийн элементийн дизайныг боловсруулдаг. Бүх нарийн ширийнийг санаатайгаар боддог.',
                 },
                 {
                   num: '04',
                   title: 'Project Execution',
+                  titleMn: 'Төсөл хэрэгжүүлэлт',
                   body: 'We manage the execution of your interior from contractor coordination and procurement to installation oversight — ensuring the realized space matches the design vision with precision.',
+                  bodyMn: 'Гүйцэтгэгчийн зохицуулалт болон бараа материал худалдан авахаас эхлэн суурилуулалтыг хяналт хүртэл дотоод засалны гүйцэтгэлийг удирддаг — хэрэгжсэн орон зай нь дизайны алсын харааны дагуу болохыг баталгаажуулдаг.',
                 },
                 {
                   num: '05',
                   title: 'Handover & Refinement',
+                  titleMn: 'Хүлээлгэн өгөлт & Сайжруулалт',
                   body: 'We remain present through final installation, styling, and handover. Post-project, we are available for any refinements that ensure your space continues to evolve beautifully over time.',
+                  bodyMn: 'Бид эцсийн суурилуулалт, загварчлал, хүлээлгэн өгөлт хүртэл хамт байдаг. Дараа нь таны орон зай цаг хугацааны туршид гоё хөгжсөөр байхын тулд аливаа нарийн тохируулга хийхэд бэлэн байдаг.',
                 },
               ].map((step) => (
                 <div class="process-step reveal" key={step.num}>
                   <div class="process-step-header">
                     <span class="process-step-num">{step.num}</span>
-                    <span class="process-step-title">{step.title}</span>
+                    <span class="process-step-title" data-en={step.title} data-mn={step.titleMn}>{step.title}</span>
                     <span class="process-step-icon">+</span>
                   </div>
-                  <div class="process-step-body">
+                  <div class="process-step-body" data-en={step.body} data-mn={step.bodyMn}>
                     <p>{step.body}</p>
                   </div>
                 </div>
@@ -827,7 +837,6 @@ app.get('/designers/:id', (c) => {
                 <blockquote class="approach-quote reveal">
                   "{designer.approach}"
                 </blockquote>
-                <p class="body-text reveal reveal-delay-1" style="margin-top: 2rem;">{designer.bio}</p>
               </div>
             </div>
           </div>
@@ -906,8 +915,8 @@ app.get('/about', (c) => {
             <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80" alt="Vivace Design studio" style="width:100%;height:100%;object-fit:cover;opacity:0.5;" />
           </div>
           <div class="container" style="position: relative; z-index: 1;">
-            <div class="eyebrow" style="color: var(--sage-stone);">Studio</div>
-            <h1 class="headline-xl" style="color: var(--warm-plaster); margin-top: 0.5rem;">About Vivace</h1>
+            <div class="eyebrow" style="color: var(--sage-stone);" data-en="Studio" data-mn="Студи">Studio</div>
+            <h1 class="headline-xl" style="color: var(--warm-plaster); margin-top: 0.5rem;" data-en="About Vivace" data-mn="Vivace-ийн тухай">About Vivace</h1>
           </div>
         </div>
 
@@ -916,8 +925,8 @@ app.get('/about', (c) => {
           <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;">
               <div>
-                <div class="eyebrow reveal">Who We Are</div>
-                <h2 class="headline-md reveal reveal-delay-1" style="margin-bottom: 2rem;">
+                <div class="eyebrow reveal" data-en="Who We Are" data-mn="Бид хэн бэ">Who We Are</div>
+                <h2 class="headline-md reveal reveal-delay-1" style="margin-bottom: 2rem;" data-en="A premium interior design studio with a deep commitment to craft and beauty." data-mn="Гар урлал болон гоо зүйд гүн тууштай тэргүүний интерьер дизайн студи.">
                   A premium interior design studio with a deep commitment to craft and beauty.
                 </h2>
                 <p class="body-text reveal reveal-delay-2" style="margin-bottom: 1.5rem;">
@@ -942,19 +951,19 @@ app.get('/about', (c) => {
         {/* Values */}
         <div style="padding: var(--section-pad) 0; background: var(--cream);">
           <div class="container">
-            <div class="eyebrow reveal">What We Believe</div>
-            <h2 class="headline-lg reveal reveal-delay-1" style="margin-bottom: 4rem;">Design Values</h2>
+            <div class="eyebrow reveal" data-en="What We Believe" data-mn="Бидний итгэл үнэмшил">What We Believe</div>
+            <h2 class="headline-lg reveal reveal-delay-1" style="margin-bottom: 4rem;" data-en="Design Values" data-mn="Дизайны үнэт зүйлс">Design Values</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 3rem;">
               {[
-                { title: 'Material Honesty', text: 'We work with materials that have genuine character — stone, timber, linen, plaster. We let them speak.' },
-                { title: 'Spatial Clarity', text: 'Great interiors are defined by what is not there as much as what is. We value negative space as a design element.' },
-                { title: 'Human Scale', text: 'Every proportion, every surface, every object is considered in relation to the human body and human experience.' },
-                { title: 'Timeless Restraint', text: 'We resist trend. We design for permanence — spaces that will remain beautiful and relevant for decades.' },
+                { title: 'Material Honesty', titleMn: 'Материалын үнэн чанар', text: 'We work with materials that have genuine character — stone, timber, linen, plaster. We let them speak.', textMn: 'Бид чулуу, модон, маалинцага, шохойцог зэргэл агуулах материалтай ажилладаг. Тэдгээрт аялах боломжоог тәвшигдэг.' },
+                { title: 'Spatial Clarity', titleMn: 'Орон зайн тодорхой байдал', text: 'Great interiors are defined by what is not there as much as what is. We value negative space as a design element.', textMn: 'Гайхаламгаай дотоод засалгыйг байгаа байгаа зүйл тодорхойлоддог. Бид хоосон орон зайг дизайны элемент болгон үнэлдэг.' },
+                { title: 'Human Scale', titleMn: 'Хүний хэмжээс', text: 'Every proportion, every surface, every object is considered in relation to the human body and human experience.', textMn: 'Бүх харьцаа, бүх гадарга, бүх эдлэл зүйлийг хүний бие болон хүний түршлэлттэй уялдуулан тооцолддог.' },
+                { title: 'Timeless Restraint', titleMn: 'Цаг хугацааны бус зохицуулалт', text: 'We resist trend. We design for permanence — spaces that will remain beautiful and relevant for decades.', textMn: 'Бид трендийг тэсчдэг. Бид тогтвор зориулан дизайн хийдэг — араван жилын туршид гоё үзэсгүү хюлаас байх орон зайууд.' },
               ].map(v => (
                 <div class="reveal" key={v.title}>
                   <div style="width: 2rem; height: 1px; background: var(--heritage-olive); margin-bottom: 1.2rem;"></div>
-                  <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; color: var(--deep-olive); margin-bottom: 0.75rem;">{v.title}</h3>
-                  <p style="font-size: 0.88rem; color: var(--sage-stone); line-height: 1.75; font-weight: 300;">{v.text}</p>
+                  <h3 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 400; color: var(--deep-olive); margin-bottom: 0.75rem;" data-en={v.title} data-mn={v.titleMn}>{v.title}</h3>
+                  <p style="font-size: 0.88rem; color: var(--sage-stone); line-height: 1.75; font-weight: 300;" data-en={v.text} data-mn={v.textMn}>{v.text}</p>
                 </div>
               ))}
             </div>
@@ -1104,28 +1113,28 @@ app.get('/contact', (c) => {
       <Nav />
       <div style="padding-top: calc(var(--nav-height) + 3rem); background: var(--cream); min-height: 80vh;">
         <div class="container" style="padding-bottom: 6rem;">
-          <div class="eyebrow reveal">Get in Touch</div>
-          <h1 class="headline-xl reveal reveal-delay-1" style="margin-bottom: 4rem;">Contact Us</h1>
+          <div class="eyebrow reveal" data-en="Get in Touch" data-mn="Холбоо барих">Get in Touch</div>
+          <h1 class="headline-xl reveal reveal-delay-1" style="margin-bottom: 4rem;" data-en="Contact Us" data-mn="Бидэнтэй холбоо бар">Contact Us</h1>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;">
             <div>
               {[
                 {
-                  label: 'Studio Address',
+                  label: 'Studio Address', labelMn: 'Студийн хаяг',
                   value: 'ХУД 20-р хороо, Мишээл экспо, Little Venice shopping mall, M2 tower 15 давхарт, 1509 тоот'
                 },
-                { label: 'Email', value: 'vivacedesign07@gmail.com' },
-                { label: 'Phone', value: '7272 3066\n9006 3066' },
-                { label: 'Studio Hours', value: 'Monday to Friday\n09:00 — 18:00' },
+                { label: 'Email', labelMn: 'И-мэйл', value: 'vivacedesign07@gmail.com' },
+                { label: 'Phone', labelMn: 'Утас', value: '7272 3066\n9006 3066' },
+                { label: 'Studio Hours', labelMn: 'Ажлын цаг', value: 'Monday to Friday\n09:00 — 18:00', valueMn: 'Даваа - Баасан\n09:00 — 18:00' },
               ].map((item, i) => (
                 <div class={`reveal reveal-delay-${i + 1}`} style="margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--warm-plaster-dark);" key={item.label}>
-                  <div class="eyebrow" style="margin-bottom: 0.5rem;">{item.label}</div>
-                  <div style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 300; color: var(--deep-olive); line-height: 1.5; white-space: pre-line;">
+                  <div class="eyebrow" style="margin-bottom: 0.5rem;" data-en={item.label} data-mn={item.labelMn}>{item.label}</div>
+                  <div style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 300; color: var(--deep-olive); line-height: 1.5; white-space: pre-line;" data-en={item.value} data-mn={item.valueMn || item.value}>
                     {item.value}
                   </div>
                 </div>
               ))}
-              <a href="/inquiry" class="btn-primary reveal reveal-delay-5">
+              <a href="/inquiry" class="btn-primary reveal reveal-delay-5" data-en="Start an Inquiry" data-mn="Хүсэлт илгээх">
                 Start an Inquiry <span class="btn-arrow"></span>
               </a>
             </div>

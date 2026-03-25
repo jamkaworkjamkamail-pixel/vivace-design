@@ -53,7 +53,7 @@ export const Footer = () => (
         {/* Brand */}
         <div class="footer-brand">
           <div class="footer-logo">Vivace Design Interior</div>
-          <p class="footer-tagline" data-en="Your dream space starts here. Interior design shaped with clarity, warmth, and identity." data-mn="Таны мөрөөдлийн орон зай эхэлнэ. Дизайн шийдвэрлэлтийг дахь засалдаа.">
+          <p class="footer-tagline" data-en="Your dream space starts here. Interior design shaped with clarity, warmth, and identity." data-mn="Таны мөрөөдлийн орон зай эндээс эхэлнэ. Дизайн — тодорхой байдал, дулаан мэдрэмж, онцлогоор хийгдсэн.">
             Your dream space starts here. Interior design shaped with clarity, warmth, and identity.
           </p>
         </div>
@@ -117,8 +117,8 @@ export const Footer = () => (
   </footer>
 )
 
-/* Shared Inquiry Section */
-export const InquirySection = ({ categories }: { categories?: any[] }) => (
+/* Full Inquiry Form Section (used on inquiry page standalone, NOT exported as InquirySection) */
+const InquiryFormSection = ({ categories }: { categories?: any[] }) => (
   <section class="inquiry-section section">
     <div class="container">
       <div class="inquiry-grid">
@@ -230,7 +230,7 @@ export const ProjectCard = ({ project, designer, variant = 'default' }: {
   )
 }
 
-/* InquirySection component */
+/* InquirySection CTA component (home/about pages) */
 export const InquirySection = () => (
   <section class="inquiry-section section" style="background: var(--off-white);">
     <div class="container">

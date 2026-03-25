@@ -1219,6 +1219,9 @@ window.addEventListener('DOMContentLoaded', function () {
       // Hero
       'Premium Interior Design Studio': 'Тэргүүний Интерьер Дизайн Студи',
       'Spaces designed to live beautifully': 'Амьдрахад тохиромжтой орон зай',
+      'Your dream space': 'Таны мөрөөдлийн орон зай',
+      'starts here': 'эндээс эхэлнэ',
+      'Your dream space starts here': 'Таны мөрөөдлийн орон зай эндээс эхэлнэ',
       'We create premium interior environments shaped with clarity, warmth, and lasting identity. Every space is a collaboration between craft and vision.':
         'Тодорхой байдал, дулаан мэдрэмж, тогтвортой онцлогоор хийгдсэн дотоод орчинг бид бүтээдэг. Бүх орон зай бол гар урлал ба алсын харааны хамтын бүтээл юм.',
       'View Projects': 'Төслүүд үзэх',
@@ -1304,6 +1307,32 @@ window.addEventListener('DOMContentLoaded', function () {
       // Footer
       '© 2024 Vivace Design Interior. All rights reserved.': '© 2024 Vivace Design Interior. Бүх эрх хамгаалагдсан.',
       'Interested in a similar project?': 'Ийм төстэй төсөлд сонирхолтой байна уу?',
+      // Process step titles
+      'Discovery & Consultation': 'Судалгаа & Зөвлөгөө',
+      'Concept Development': 'Концепц боловсруулалт',
+      'Design Development': 'Дизайн боловсруулалт',
+      'Project Execution': 'Төсөл хэрэгжүүлэлт',
+      'Handover & Refinement': 'Хүлээлгэн өгөлт & Сайжруулалт',
+      // About page
+      'A premium interior design studio with a deep commitment to craft and beauty.': 'Гар урлал болон гоо зүйд гүн тууштай тэргүүний интерьер дизайн студи.',
+      'About Vivace': 'Vivace-ийн тухай',
+      'Who We Are': 'Бид хэн бэ',
+      'What We Believe': 'Бидний итгэл үнэмшил',
+      'Design Values': 'Дизайны үнэт зүйлс',
+      'Material Honesty': 'Материалын үнэн чанар',
+      'Spatial Clarity': 'Орон зайн тодорхой байдал',
+      'Human Scale': 'Хүний хэмжээс',
+      'Timeless Restraint': 'Цаг хугацааны бус зохицуулалт',
+      // Contact page  
+      'Studio Address': 'Студийн хаяг',
+      'Studio Hours': 'Ажлын цаг',
+      'Monday to Friday': 'Даваа - Баасан',
+      'Contact Us': 'Бидэнтэй холбоо бар',
+      'Start an Inquiry': 'Хүсэлт илгээх',
+      // Scroll hint
+      'Scroll to explore': 'Гүйлгэж үзэх',
+      // Pinned panel
+      'Designed by': 'Зохиогч:',
     };
 
     // Get stored lang preference (default EN)
@@ -1332,6 +1361,12 @@ window.addEventListener('DOMContentLoaded', function () {
         // Only swap text content — preserve child elements
         if (el.children.length === 0) {
           el.textContent = (l === 'mn') ? mnText : enText;
+        } else {
+          // For elements with a single child <p> (like process-step-body)
+          var firstChild = el.firstElementChild;
+          if (firstChild && firstChild.children.length === 0) {
+            firstChild.textContent = (l === 'mn') ? mnText : enText;
+          }
         }
       });
 
