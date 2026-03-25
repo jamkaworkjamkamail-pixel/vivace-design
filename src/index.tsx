@@ -70,20 +70,14 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* ── MARQUEE ── */}
-      <div class="marquee-section" aria-hidden="true">
-        <div class="marquee-track">
-          {[
-            'Kitchen', 'Living Room', 'Master Bedroom', 'Office',
-            'Coffee Shop', 'Dental Clinic', 'Kids Room', 'Auto Mall',
-            'E-sport Center', 'Bathroom', 'Work Room',
-            'Kitchen', 'Living Room', 'Master Bedroom', 'Office',
-            'Coffee Shop', 'Dental Clinic', 'Kids Room', 'Auto Mall',
-            'E-sport Center', 'Bathroom', 'Work Room',
-          ].map((item, i) => (
+      {/* ── MARQUEE (Noomo-style pausing strip) ── */}
+      <div class="noomo-marquee" aria-hidden="true">
+        <div class="noomo-marquee-track">
+          {['Kitchen','Living Room','Master Bedroom','Office','Coffee Shop','Dental Clinic','Kids Room','Auto Mall','E-sport Center','Bathroom','Work Room',
+            'Kitchen','Living Room','Master Bedroom','Office','Coffee Shop','Dental Clinic','Kids Room','Auto Mall','E-sport Center','Bathroom','Work Room'].map((item, i) => (
             <>
-              <span class="marquee-item">{item}</span>
-              <span class="marquee-dot"></span>
+              <span class="noomo-marquee-item">{item}</span>
+              <span class="noomo-marquee-sep"></span>
             </>
           ))}
         </div>
@@ -127,74 +121,109 @@ app.get('/', (c) => {
         </div>
       </section>
 
-      {/* ── FEATURED PROJECTS ── */}
-      <section class="projects-section section">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-title-group">
-              <div class="eyebrow reveal">Selected Works</div>
-              <h2 class="headline-lg reveal reveal-delay-1">Featured Projects</h2>
-            </div>
-            <a href="/projects" class="btn-outline reveal reveal-delay-2">
-              All Projects <span class="btn-arrow"></span>
-            </a>
-          </div>
+      {/* ── PINNED SCROLL — Featured Projects Storytelling (Noomo) ── */}
+      <section class="pinned-scroll-section" id="pinned-stories">
+        <div class="pinned-inner">
+          {featured.slice(0, 4).map((project, i) => {
+            const designer = getDesignerById(project.designerId)
+            return (
+              <div class="pinned-panel" key={project.id}>
+                {/* Background image */}
+                <div class="pinned-panel-bg">
+                  <img src={project.coverImage} alt={project.title} loading={i === 0 ? 'eager' : 'lazy'} />
+                </div>
+                <div class="pinned-panel-overlay"></div>
 
-          <div class="project-grid">
-            {featured.map((project, i) => {
-              const designer = getDesignerById(project.designerId)
-              return (
-                <a
-                  href={`/projects/${project.id}`}
-                  class={`project-card reveal reveal-delay-${Math.min(i + 1, 5)}`}
-                  key={project.id}
-                >
-                  <div class="project-card-image">
-                    <img
-                      src={project.coverImage}
-                      alt={project.title}
-                      loading="lazy"
-                    />
-                    <span class="card-category-badge">{project.category}</span>
-                  </div>
-                  <div class="project-card-meta">
-                    <div class="project-card-designer">Designed by {designer?.name}</div>
-                    <div class="project-card-title">{project.title}</div>
-                    <div class="project-card-desc">{project.description}</div>
-                    <div class="project-card-footer">
-                      {project.location && <span class="project-meta-item">{project.location}</span>}
-                      {project.year && <span class="project-meta-item">{project.year}</span>}
-                      {project.area && <span class="project-meta-item">{project.area}</span>}
+                {/* Content */}
+                <div class="pinned-panel-content">
+                  <div>
+                    <div class="pinned-panel-label">{project.category}</div>
+                    <h2 class="pinned-panel-title">
+                      {project.title.split(' — ')[0]}<br />
+                      <em>{project.title.split(' — ')[1] || ''}</em>
+                    </h2>
+                    <p class="pinned-panel-desc">{project.description}</p>
+                    <div class="pinned-panel-designer">Designed by {designer?.name}</div>
+                    <div class="pinned-panel-meta">
+                      {project.location && <span>{project.location}</span>}
+                      {project.year && <span>{project.year}</span>}
+                      {project.area && <span>{project.area}</span>}
                     </div>
+                    <a href={`/projects/${project.id}`} class="btn-primary" style="margin-top: 2rem; display: inline-flex; background: var(--warm-plaster); color: var(--deep-olive); border-color: var(--warm-plaster);">
+                      View Project <span class="btn-arrow"></span>
+                    </a>
                   </div>
-                </a>
-              )
-            })}
-          </div>
+                  <div class="pinned-panel-right">
+                    <div class="pinned-panel-index">0{i + 1}</div>
+                  </div>
+                </div>
+
+                {/* Progress dots */}
+                <div class="pinned-progress-bar">
+                  <div class="pinned-progress-dots">
+                    {featured.slice(0, 4).map((_, di) => (
+                      <div class={`pinned-progress-dot ${di === i ? 'active' : ''}`} key={di}></div>
+                    ))}
+                  </div>
+                </div>
+                <div class="pinned-scroll-hint">Scroll to explore</div>
+              </div>
+            )
+          })}
         </div>
       </section>
 
-      {/* ── CATEGORIES ── */}
-      <section class="categories-section section">
-        <div class="container">
-          <div class="section-header">
-            <div class="section-title-group">
-              <div class="eyebrow">Project Categories</div>
-              <h2 class="headline-lg">Browse by Space</h2>
-            </div>
+      {/* ── AMBIENT STRIP ── */}
+      <div class="ambient-strip">
+        {[
+          { src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', label: 'Kitchen' },
+          { src: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80', label: 'Bedroom' },
+          { src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80', label: 'Coffee Shop' },
+        ].map(item => (
+          <div class="ambient-strip-item" key={item.label}>
+            <img src={item.src} alt={item.label} loading="lazy" />
+            <span class="ambient-strip-item-label">{item.label}</span>
           </div>
-          <div class="categories-grid">
-            {categories.map((cat, i) => (
-              <a href={`/categories#${cat.slug}`} class="category-item" key={cat.slug}>
-                <div class="category-item-inner">
-                  <span class="category-num">{String(i + 1).padStart(2, '0')}</span>
-                  <div class="category-name">{cat.label}</div>
-                  <div class="category-name-mn">{cat.labelMn}</div>
+        ))}
+      </div>
+
+      {/* ── CATEGORIES — Noomo full-screen style ── */}
+      <section style="background: var(--deep-olive);">
+        <div style="padding: 5rem var(--gutter) 3rem; max-width: var(--max-width); margin: 0 auto;">
+          <div class="eyebrow" style="color: var(--sage-stone);">Browse</div>
+          <h2 class="headline-lg" style="color: var(--warm-plaster); margin-top: 0.5rem;">Project Categories</h2>
+        </div>
+        <div>
+          {categories.map((cat, i) => {
+            const catImages = [
+              'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80',
+              'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80',
+              'https://images.unsplash.com/photo-1555212697-194d092e3b8f?w=1200&q=80',
+              'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1200&q=80',
+              'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80',
+              'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
+              'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80',
+              'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80',
+              'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=80',
+              'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80',
+              'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&q=80',
+            ]
+            return (
+              <a href={`/categories#${cat.slug}`} class="category-full-item" key={cat.slug}>
+                <div class="category-full-item-bg">
+                  <img src={catImages[i % catImages.length]} alt={cat.label} loading="lazy" />
                 </div>
-                <div class="category-arrow">→</div>
+                <div class="category-full-content">
+                  <div>
+                    <div class="category-full-title">{cat.label}</div>
+                    <div class="category-full-title-mn">{cat.labelMn}</div>
+                  </div>
+                  <div class="category-full-arrow">View Projects</div>
+                </div>
+                <span class="category-full-num">{String(i + 1).padStart(2, '0')}</span>
               </a>
-            ))}
-          </div>
+            )
+          })}
         </div>
       </section>
 
