@@ -79,22 +79,22 @@
     'designers.portfolio':{ en: 'View Portfolio →',   mn: 'Портфолио үзэх →' },
 
     /* ── STATS BAR ── */
-    'stats.projects':    { en: 'Projects Completed',  mn: 'Дууссан төслүүд' },
+    'stats.projects':    { en: 'Projects Completed',  mn: 'Хэрэгжүүлсэн төсөл' },
     'stats.categories':  { en: 'Design Categories',   mn: 'Дизайны ангилал' },
-    'stats.designers':   { en: 'Senior Designers',    mn: 'Ахлах дизайнерууд' },
-    'stats.years':       { en: 'Years of Excellence', mn: 'Жилийн туршлага' },
+    'stats.designers':   { en: 'Senior Designers',    mn: 'Мэргэжилтэн' },
+    'stats.years':       { en: 'Years of Excellence', mn: 'Салбартаа ажилсан туршлага' },
 
     /* ── PROCESS SECTION ── */
-    'process.eyebrow':   { en: 'How We Work',         mn: 'Бид хэрхэн ажилладаг' },
-    'process.headline':  { en: 'Our Design Process',  mn: 'Манай дизайны процесс' },
-    'process.01.title':  { en: 'Discovery & Consultation', mn: 'Судалгаа & Зөвлөгөө' },
-    'process.01.body':   { en: 'We begin with a deep conversation — understanding not just what you need, but how you want to feel inside your space. We study your lifestyle, aspirations, material preferences, and the architectural context of the project.', mn: 'Бид гүн ярилцлагаас эхэлдэг — зөвхөн юу хэрэгтэйг биш, орон зайдаа хэрхэн мэдрэхийг ойлгодог. Таны амьдралын хэв маяг, хүсэл тэмүүлэл, материалын уул болон архитектурын контекстийг судалдаг.' },
-    'process.02.title':  { en: 'Concept Development', mn: 'Концепц боловсруулалт' },
-    'process.02.body':   { en: 'Our designers develop a considered spatial and material narrative for your project. Concept boards, mood studies, and preliminary layouts are reviewed together in a collaborative session to align vision.', mn: 'Манай дизайнерууд таны төслийн орон зай болон материалын тухай бодолтой түүхийг боловсруулдаг. Концепц самбар, уур амьсгалын судалгаа, урьдчилсан төлөвлөлтийг хамтарсан хурлаар хянаж, алсын харааг нэгтгэдэг.' },
-    'process.03.title':  { en: 'Design Development',  mn: 'Дизайн боловсруулалт' },
-    'process.03.body':   { en: 'With the concept confirmed, we develop detailed interior drawings, material specifications, furniture selections, lighting plans, and bespoke element designs. Every detail is considered with intention.', mn: 'Концепц батлагдсаны дараа дэлгэрэнгүй дотоод зургийг, материалын тодорхойлолт, тавилгын сонголт, гэрэлтүүлгийн төлөвлөгөө болон захиалгат элементийн дизайныг боловсруулдаг. Бүх нарийн ширийнийг санаатайгаар бодолцдог.' },
-    'process.04.title':  { en: 'Project Execution',   mn: 'Төсөл хэрэгжүүлэлт' },
-    'process.04.body':   { en: 'We manage the execution of your interior from contractor coordination and procurement to installation oversight — ensuring the realized space matches the design vision with precision.', mn: 'Гүйцэтгэгчийн зохицуулалт болон бараа худалдан авахаас эхлэн суурилуулалтыг хянах хүртэл дотоод засалны гүйцэтгэлийг удирддаг — хэрэгжсэн орон зай нь дизайны алсын харааны дагуу болохыг баталгаажуулдаг.' },
+    'process.eyebrow':   { en: 'How We Work',         mn: 'Үйлчилгээний дараалал' },
+    'process.headline':  { en: 'Our Design Process',  mn: 'Үйлчилгээний дараалал' },
+    'process.01.title':  { en: 'Discovery & Consultation', mn: 'Хэмжилт, уулзалт' },
+    'process.01.body':   { en: 'We begin with a deep conversation — understanding not just what you need, but how you want to feel inside your space. We study your lifestyle, aspirations, material preferences, and the architectural context of the project.', mn: 'Хариулагчийн хэрэгцээ, хүсэл, төсвийг тодорхойлон анхан шатны зөвлөгөө өгнө. Талбай дээр хэмжилт хийж, орон зайн онцлогийг судална.' },
+    'process.02.title':  { en: 'Concept Development', mn: 'Зураг, төсөл' },
+    'process.02.body':   { en: 'Our designers develop a considered spatial and material narrative for your project. Concept boards, mood studies, and preliminary layouts are reviewed together in a collaborative session to align vision.', mn: 'Интерьер, замыглат тавилтын ерөнхий шийдэл, өнгө, зохион байгуулалт, хэв маягийг тодорхойно. Гүйцэтгэлд шаардлагатай нарийвчилсан зураг, төлөвлөлтийг боловсруулна.' },
+    'process.03.title':  { en: 'Design Development',  mn: 'Төслийн гүйцэтгэл' },
+    'process.03.body':   { en: 'With the concept confirmed, we develop detailed interior drawings, material specifications, furniture selections, lighting plans, and bespoke element designs. Every detail is considered with intention.', mn: 'Батлагдсан зургт дагуу ажлыг мөргөжлийн түвшинд гүйцэтгэнэ. Төслийн шалгах, бэлэн болсон орчинг хариулагчид хүлээлгэн өгнө.' },
+    'process.04.title':  { en: 'Project Execution',   mn: 'Гүйцэтгэл, ажил хүлээлцэх' },
+    'process.04.body':   { en: 'We manage the execution of your interior from contractor coordination and procurement to installation oversight — ensuring the realized space matches the design vision with precision.', mn: 'Ажлын хүлээлцэх нь гүйцэтгэлийг зураг төсөл, стандартын түгшин шалгасны дараа зохион байгуулалт, албан ёсны бичиг баримтаар хүлээлгэн өгнө.' },
     'process.05.title':  { en: 'Handover & Refinement', mn: 'Хүлээлгэн өгөлт & Сайжруулалт' },
     'process.05.body':   { en: 'We remain present through final installation, styling, and handover. Post-project, we are available for any refinements that ensure your space continues to evolve beautifully over time.', mn: 'Бид эцсийн суурилуулалт, загварчлал, хүлээлгэн өгөлт хүртэл хамт байдаг. Дараа нь таны орон зай цаг хугацааны туршид гоё хөгжсөөр байхын тулд аливаа нарийн тохируулга хийхэд бэлэн байдаг.' },
 
@@ -207,7 +207,7 @@
     'about.who.eye':     { en: 'Who We Are',      mn: 'Бид хэн бэ' },
     'about.who.h2':      { en: 'A premium interior design studio with a deep commitment to craft and beauty.', mn: 'Гар урлал болон гоо зүйд гүн тууштай тэргүүний интерьер дизайн студи.' },
     'about.who.p1':      { en: 'Vivace Design Interior was founded on a singular belief: that beautifully considered interior environments have the power to transform how people feel, work, and live.', mn: 'Vivace Design Interior нэгэн итгэл дээр үндэслэн байгуулагдсан: гоёор зохион бүтээгдсэн дотоод орчин нь хүмүүсийн мэдрэх, ажиллах, амьдрах байдлыг өөрчлөх хүчтэй.' },
-    'about.who.p2':      { en: 'Our studio brings together three exceptionally talented interior designers — Жанцанноров, Төгөлдөр, and Анхбаяр — each with a distinctive creative voice and a shared commitment to excellence. We work across residential, commercial, hospitality, and wellness categories.', mn: 'Манай студи гурван онцгой авъяаслаг дотоод дизайнерыг нэгтгэдэг — Жанцанноров, Төгөлдөр, Анхбаяр — тус бүр онцлог бүтээлч хоолойтой, хамтын тэмүүлэлтэй. Бид орон сууц, арилжааны, зочид буудлын болон сайн мэдрэмжийн ангилалуудаар ажилладаг.' },
+    'about.who.p2':      { en: 'Our studio brings together three exceptionally talented interior designers — Zhantsannorov, Togoldor, and Ankhbayar — each with a distinctive creative voice and a shared commitment to excellence. We work across residential, commercial, hospitality, and wellness categories.', mn: 'Манай студи гурван онцгой авъяаслаг дотоод дизайнерыг нэгтгэдэг — Ц. Жанцанноров, Б. Төгөлдөр, Х. Анхбаяр — тус бүр онцлог бүтээлч хоолойтой, хамтын амжилтанд тууштай байдгийг авчирдаг. Бид орон сууц, арилжааны, зочид буудал болон эрүүл мэндийн салбарт ажилладаг.' },
     'about.who.p3':      { en: 'Every project we undertake begins with a genuine curiosity about the people who will inhabit the space. From that understanding, we build design narratives that are both precise and deeply human.', mn: 'Бидний хийдэг бүх төсөл нь орон зайд амьдрах хүмүүсийн тухай жинхэнэ сонирхлоос эхэлдэг. Тэр ойлголтоосоо бид нарийн бөгөөд гүнзгий хүний мэдрэмжтэй дизайны түүхийг бүтээдэг.' },
     'about.values.eye':  { en: 'What We Believe', mn: 'Бидний итгэл үнэмшил' },
     'about.values.h2':   { en: 'Design Values',   mn: 'Дизайны үнэт зүйлс' },
@@ -252,6 +252,18 @@
     'misc.not.found':    { en: 'Not found',           mn: 'Олдсонгүй' },
     'misc.back.projects':{ en: 'Back to Projects',    mn: 'Төслүүд рүү буцах' },
     'misc.back.des':     { en: 'Back to Designers',   mn: 'Дизайнерууд рүү буцах' },
+    
+    /* ── SOCIAL & COMPANY INFO ── */
+    'social.instagram':  { en: '@vivace.design',      mn: '@vivace.design' },
+    'social.facebook':   { en: 'Vivace Design',       mn: 'Vivace Design' },
+    'company.stat.years':{ en: '15 years',            mn: '15 жил' },
+    'company.stat.desc.years': { en: 'Experience in the industry', mn: 'Салбартаа ажилсан туршлага' },
+    'company.stat.ontime':{ en: '100%',               mn: '100%' },
+    'company.stat.desc.ontime': { en: 'Projects delivered on time', mn: 'Төслүүдийг хугацаанд нь хүлээлгэн өгсөн' },
+    'company.stat.experts':{ en: '150+',              mn: '150+' },
+    'company.stat.desc.experts': { en: 'Professional partners', mn: 'Гаруй мэргэжилтэн' },
+    'company.stat.projects':{ en: '300+',             mn: '300+' },
+    'company.stat.desc.projects': { en: 'Projects completed', mn: 'Хэрэгжүүлсэн төсөл' },
   };
 
   /* ─────────────────────────────────────────────────────────
