@@ -1,14 +1,14 @@
 /**
- * Vivace Design Interior — Unified i18n System v4
- * =================================================
+ * Vivace Design Interior — Unified i18n System v5 — PRODUCTION GRADE
+ * ====================================================================
  * Handles:  data-i18n="key"          → looks up T[key][lang]
  *           data-en="..." data-mn="..." → legacy inline bilingual attrs
  *           data-i18n-ph="key"        → input placeholders
  *           data-i18n-html="key"      → innerHTML (for rich markup)
- *           data-i18n-tpl="key"       → templates with {val}
  *
- * Language toggle: any button with [data-lang="en"] or [data-lang="mn"]
- * Active class .active is toggled automatically.
+ * FIX v5:  VivaceSplit-safe translateEl() — detects split elements
+ *          and rebuilds split structure instead of destroying spans.
+ *          Language toggle wired with retry so it survives GSAP timing.
  */
 (function () {
   'use strict';
@@ -19,30 +19,29 @@
   var T = {
 
     /* ── NAV ── */
-    'nav.home':          { en: 'Home',        mn: 'Нүүр хуудас' },
+    'nav.home':          { en: 'Home',        mn: 'Нүүр' },
     'nav.projects':      { en: 'Projects',    mn: 'Төслүүд' },
     'nav.categories':    { en: 'Categories',  mn: 'Ангилал' },
     'nav.designers':     { en: 'Designers',   mn: 'Дизайнерууд' },
     'nav.about':         { en: 'About',       mn: 'Бидний тухай' },
     'nav.contact':       { en: 'Contact',     mn: 'Холбоо барих' },
-    'nav.inquiry':       { en: 'Inquiry',     mn: 'Лавлага' },
+    'nav.inquiry':       { en: 'Inquiry',     mn: 'Холбогдох' },
 
     /* ── HERO ── */
     'hero.eyebrow':      { en: 'Premium Interior Design Studio', mn: 'Тэргүүний Интерьер Дизайн Студи' },
-    'hero.title.1':      { en: 'Your dream space',  mn: 'Таны мөрөөдлийн орон зай' },
-    'hero.title.2':      { en: 'starts here',        mn: 'эндээс эхэлнэ' },
+    'hero.title':        { en: 'Your dream space starts here', mn: 'Таны мөрөөдлийн орон зай эндээс эхэлнэ' },
     'hero.subtitle':     { en: 'We create premium interior environments shaped with clarity, warmth, and lasting identity. Every space is a collaboration between craft and vision.', mn: 'Тодорхой байдал, дулаан мэдрэмж, тогтвортой онцлогоор хийгдсэн дотоод орчинг бид бүтээдэг. Бүх орон зай бол гар урлал ба алсын харааны хамтын бүтээл юм.' },
     'hero.btn.projects': { en: 'View Projects', mn: 'Төслүүд үзэх' },
     'hero.btn.inquiry':  { en: 'Start Inquiry', mn: 'Хүсэлт илгээх' },
     'hero.scroll':       { en: 'Scroll',        mn: 'Гүйлгэх' },
 
     /* ── INTRO SECTION ── */
-    'intro.eyebrow':     { en: 'Studio Narrative',  mn: 'Студийн түүх' },
-    'intro.headline':    { en: 'Interior design shaped with clarity, warmth, and identity.', mn: 'Тодорхой байдал, дулаан мэдрэмж, онцлогоор хийгдсэн интерьер дизайн.' },
-    'intro.p1':          { en: 'Vivace Design Interior is a premium interior design studio based in Ulaanbaatar. We create considered environments for residential, commercial, and hospitality clients — spaces that balance beauty with the real rhythms of daily life.', mn: 'Vivace Design Interior нь Улаанбаатарт байрлах тэргүүний интерьер дизайн студи юм. Бид амьдрах, арилжааны болон зочид буудлын үйлчлүүлэгчдэд зориулсан орчинг бүтээдэг — өдөр тутмын амьдралын хэмнэлтэй уялддаг гоо зүй болон функцийн тэнцвэртэй орон зай.' },
-    'intro.p2':          { en: 'Our work is driven by a deep respect for materiality, proportion, and light. We believe the best interiors are those that feel both timeless and deeply personal — environments that elevate the everyday.', mn: 'Бидний ажил нь материал, хэмжээ, гэрэлд гүнзгий хүндэтгэл дээр тулгуурладаг. Хамгийн сайн интерьер бол цаг хугацааны бус бөгөөд гүнзгий хувийн мэдрэмжтэй байдаг — өдөр тутмыг өргөмжилдөг орчин гэдэгт бид итгэдэг.' },
-    'intro.btn':         { en: 'Our Approach',       mn: 'Манай арга барил' },
-    'intro.tag':         { en: 'Est. Ulaanbaatar',   mn: 'Үүссэн. Улаанбаатар' },
+    'intro.eyebrow':     { en: 'Welcome to Vivace',  mn: 'Vivace-д тавтай морил' },
+    'intro.headline':    { en: 'Transforming Spaces, Elevating Lives', mn: 'Орон зайг өөрчилж, амьдралыг өргөмжлөх' },
+    'intro.p1':          { en: 'Vivace Design Interior is a premium interior design studio based in Ulaanbaatar, Mongolia. We specialize in creating beautifully crafted spaces that combine elegance, functionality, and timeless design. Whether it\'s a luxurious residence, a modern office, a welcoming coffee shop, or a sophisticated dental clinic, we bring your vision to life with meticulous attention to detail.', mn: 'Vivace Design Interior бол Улаанбаатарт байрладаг тэргүүний дотоод дизайн студи юм. Бид болоовсронгуй байдал, ажиллагаа болон мөнхийн дизайнаар хослуулсан гоёмсог орон зай бүтээхэд мэргэшсэн. Тансаг орон сууц, орчин үеийн оффис, эелдэг кофе шоп, боловсронгуй шүдний эмнэлэг гэх мэт та бүхний алсын харааг нарийн зүйлд анхаарал хандуулснаар бодит болгодог.' },
+    'intro.p2':          { en: 'Our team of three exceptional designers brings diverse expertise and a shared passion for creating interiors that resonate with your lifestyle and aspirations. Every project is a collaborative journey where creativity, precision, and craftsmanship come together to deliver spaces you\'ll love for years to come.', mn: 'Манай гурван онцгой дизайнерын баг нь олон талт туршлага болон таны амьдралын хэв маяг, мөрөөдөлтэй уялдсан дотоод засал дизайныг бүтээх хайр дурлалаар хангадаг. Төсөл бүр бүтээлч байдал, нарийвчлал, гар урлал нэгдэж та олон жилийн турш хайрлах орон зайг хүргэдэг хамтын аялал юм.' },
+    'intro.btn':         { en: 'Learn More About Us',       mn: 'Бидний тухай илүү ихийг мэдэх' },
+    'intro.tag':         { en: 'Est. 2024 · Ulaanbaatar',   mn: 'Үүссэн 2024 · Улаанбаатар' },
 
     /* ── PINNED PANELS ── */
     'panel.view':        { en: 'View Project',       mn: 'Төсөл үзэх' },
@@ -179,6 +178,9 @@
     'proj.inquiry.btn':  { en: 'Start Inquiry',      mn: 'Хүсэлт илгээх' },
     'proj.get.in.touch': { en: 'Get in Touch',       mn: 'Холбоо барих' },
 
+    /* ── CARD "DESIGNED BY" — used in components.tsx ProjectCard ── */
+    'card.designed':     { en: 'Designed by',        mn: 'Зохиогч:' },
+
     /* ── DESIGNERS PAGE ── */
     'despage.eyebrow':   { en: 'Creative Authors',  mn: 'Бүтээлч зохиогчид' },
     'despage.headline':  { en: 'Our Designers',      mn: 'Манай дизайнерууд' },
@@ -202,23 +204,25 @@
     'desprofile.projects':  { en: 'Projects',             mn: 'Төслүүд' },
 
     /* ── ABOUT PAGE ── */
-    'about.eyebrow':     { en: 'Studio',          mn: 'Студи' },
-    'about.headline':    { en: 'About Vivace',    mn: 'Vivace-ийн тухай' },
-    'about.who.eye':     { en: 'Who We Are',      mn: 'Бид хэн бэ' },
-    'about.who.h2':      { en: 'A premium interior design studio with a deep commitment to craft and beauty.', mn: 'Гар урлал болон гоо зүйд гүн тууштай тэргүүний интерьер дизайн студи.' },
-    'about.who.p1':      { en: 'Vivace Design Interior was founded on a singular belief: that beautifully considered interior environments have the power to transform how people feel, work, and live.', mn: 'Vivace Design Interior нэгэн итгэл дээр үндэслэн байгуулагдсан: гоёор зохион бүтээгдсэн дотоод орчин нь хүмүүсийн мэдрэх, ажиллах, амьдрах байдлыг өөрчлөх хүчтэй.' },
-    'about.who.p2':      { en: 'Our studio brings together three exceptionally talented interior designers — Zhantsannorov, Togoldor, and Ankhbayar — each with a distinctive creative voice and a shared commitment to excellence. We work across residential, commercial, hospitality, and wellness categories.', mn: 'Манай студи гурван онцгой авъяаслаг дотоод дизайнерыг нэгтгэдэг — Ц. Жанцанноров, Б. Төгөлдөр, Х. Анхбаяр — тус бүр онцлог бүтээлч хоолойтой, хамтын амжилтанд тууштай байдгийг авчирдаг. Бид орон сууц, арилжааны, зочид буудал болон эрүүл мэндийн салбарт ажилладаг.' },
-    'about.who.p3':      { en: 'Every project we undertake begins with a genuine curiosity about the people who will inhabit the space. From that understanding, we build design narratives that are both precise and deeply human.', mn: 'Бидний хийдэг бүх төсөл нь орон зайд амьдрах хүмүүсийн тухай жинхэнэ сонирхлоос эхэлдэг. Тэр ойлголтоосоо бид нарийн бөгөөд гүнзгий хүний мэдрэмжтэй дизайны түүхийг бүтээдэг.' },
-    'about.values.eye':  { en: 'What We Believe', mn: 'Бидний итгэл үнэмшил' },
-    'about.values.h2':   { en: 'Design Values',   mn: 'Дизайны үнэт зүйлс' },
-    'about.v1.title':    { en: 'Material Honesty', mn: 'Материалын үнэн чанар' },
-    'about.v1.text':     { en: 'We work with materials that have genuine character — stone, timber, linen, plaster. We let them speak.', mn: 'Бид чулуу, мод, маалинцаг, шохойцог зэрэг жинхэнэ шинж чанартай материалтай ажилладаг. Тэдгээрт ярьах боломж олгодог.' },
-    'about.v2.title':    { en: 'Spatial Clarity',  mn: 'Орон зайн тодорхой байдал' },
-    'about.v2.text':     { en: 'Great interiors are defined by what is not there as much as what is. We value negative space as a design element.', mn: 'Гайхалтай дотоод засалыг байгаа зүйлээс ч илүү байхгүй зүйл тодорхойлдог. Бид хоосон орон зайг дизайны элемент болгон үнэлдэг.' },
-    'about.v3.title':    { en: 'Human Scale',      mn: 'Хүний хэмжээс' },
-    'about.v3.text':     { en: 'Every proportion, every surface, every object is considered in relation to the human body and human experience.', mn: 'Бүх харьцаа, бүх гадаргуу, бүх эдлэлийг хүний бие болон хүний туршлагатай уялдуулан тооцолддог.' },
-    'about.v4.title':    { en: 'Timeless Restraint', mn: 'Цаг хугацааны бус зохицуулалт' },
-    'about.v4.text':     { en: 'We resist trend. We design for permanence — spaces that will remain beautiful and relevant for decades.', mn: 'Бид трендийг тэсгэдэг. Бид тогтвортой зориулан дизайн хийдэг — арваад жилийн туршид гоё үзэсгэлэнтэй хэвээр байх орон зайнуудыг.' },
+    'about.eyebrow':     { en: 'Welcome to Vivace',          mn: 'Vivace-д тавтай морил' },
+    'about.headline':    { en: 'Creating elegant spaces that transform lives',    mn: 'Амьдралыг өөрчлөх гоёмсог орон зайг бүтээх' },
+    'about.who.eye':     { en: 'Our Story',      mn: 'Манай түүх' },
+    'about.who.h2':      { en: 'Where vision meets craftsmanship', mn: 'Алсын хараа ба гар урлал уулзах газар' },
+    'about.who.p1':      { en: '"Vivachi Arte" LLC was founded in 2024 by founders L.Uyanga and B.Tuguldur, based on years of experience, accumulated knowledge, shared values and strategic goals, to advance interior design, execution, and custom furniture manufacturing to a new level.', mn: '"Вивачи Артэ" ХХК нь үүсгэн байгуулагч Л.Уянга болон Б.Төгөлдөр нарын олон жилийн туршлага, хуримтлуулсан мэдлэг, нэгдмэл үнэ цэнэ, стратегийн зорилгын хүрээнд 2024 онд "Вивачи Артэ" ХХК-ийг байгуулж, интерьер зураг төсөл, гүйцэтгэл, захиалгат тавилга үйлдвэрлэлийн чиглэлээр үйл ажиллагаагаа шинэ шатанд гарган ажиллаж байна.' },
+    'about.who.p2':      { en: 'We design and implement tailored interior and furniture solutions for offices, service areas, residential apartments, restaurants, and various other spaces — from blueprints through manufacturing, installation, and key handover — and have successfully completed many projects.', mn: 'Бид оффис, үйлчилгээний талбай, амины орон сууц, ресторан зэрэг төрөл бүрийн орон зайд тохирсон интерьер болон тавилгын шийдлийг зураг төслөөс эхлэн үйлдвэрлэл, угсралт, түлхүүр гардуулах хүртэл логикоор нь хэрэгжүүлж, олон төслийг амжилттай хүлээлгэн өгөөд байна.' },
+    'about.who.p3':      { en: 'Our factory is equipped with fully automated machinery that meets international quality standards, and has the capacity to manufacture paint finishes, woodwork, and all types of custom furniture to a high standard.', mn: 'Манай үйлдвэр нь олон улсын чанар стандартад нийцсэн бүрэн автомат тоног төхөөрөмжөөр тоноглогдсон бөгөөд будаг, модон хийц болон бүх төрлийн захиалгат тавилгыг өндөр чанартайгаар үйлдвэрлэх хүчин чадалтай.' },
+    'about.who.p4':      { en: 'We prioritize experience, skill, creative thinking, and new ideas, and work to build a competitive, professional team in our industry. We also emphasize smart, responsible use in every material selection and planning decision, striving to create a perfect balance of aesthetics and functionality in every space.', mn: 'Бид туршлага, ур чадвар, бүтээлч сэтгэлгээ, шинэ санал санаачилгыг эрхэмлэн, салбартаа өрсөлдөх чадвартай, мэргэжлийн багийг бүрдүүлэн ажиллаж байна. Мөн материалын сонголт, төлөвлөлтийн шийдэл бүрд ухаалаг, хариуцлагатай хэрэглээг чухалчилж, орон зай бүрд гоо зүй болон хэрэглээний төгс тэнцвэрийг бий болгохыг зорьдог.' },
+    'about.who.p5':      { en: 'We work to build long-term partnerships with client organizations, creating value through reliable execution, quality products, and integrated management service solutions.', mn: 'Бид харилцагч байгууллагуудтай урт хугацааны түншлэл бий болгож, найдвартай гүйцэтгэл, чанартай бүтээгдэхүүн, нэгдсэн удирдлагатай үйлчилгээний шийдлээр үнэ цэнэ бүтээхийг зорин ажиллаж байна.' },
+    'about.values.eye':  { en: 'Our Approach', mn: 'Манай арга барил' },
+    'about.values.h2':   { en: 'Our Values',   mn: 'Бидний үнэт зүйлс' },
+    'about.v1.title':    { en: 'Individual Design', mn: 'Хувь хүний дизайн' },
+    'about.v1.text':     { en: 'We believe every space should reflect the character and needs of those who inhabit it. Our designs are tailored specifically for you.', mn: 'Бид орон зай бүр түүнийг эзэмшигч хүмүүсийн зан чанар, хэрэгцээг тусгах ёстой гэдэгт итгэдэг. Манай дизайнууд танд тохируулагдсан байдаг.' },
+    'about.v2.title':    { en: 'Quality & Craftsmanship',  mn: 'Чанар ба гар урлал' },
+    'about.v2.text':     { en: 'We partner with the world\'s finest materials and skilled artisans to execute every detail to perfection.', mn: 'Бид дэлхийн шилдэг материал болон ур чадвартай урчуудтай хамтарч нарийн зүйл бүрийг төгс гүйцэтгэдэг.' },
+    'about.v3.title':    { en: 'Timeless Elegance',      mn: 'Мөнхийн дэгжин байдал' },
+    'about.v3.text':     { en: 'Our designs transcend trends, creating interiors that remain stylish and relevant for years to come.', mn: 'Манай дизайнууд трендээс давж, олон жилийн турш загвар, хамаатай хэвээр үлдэх дотоод засал дизайныг бүтээдэг.' },
+    'about.v4.title':    { en: 'Collaborative Process', mn: 'Хамтын процесс' },
+    'about.v4.text':     { en: 'We believe great design is born through collaboration. Your vision and our expertise combine to create extraordinary results.', mn: 'Бид агуу дизайн хамтын ажиллагаагаар бий болдог гэдэгт итгэдэг. Таны алсын хараа болон манай туршлага нэгдэж ер бусын үр дүнг бий болгодог.' },
 
     /* ── CONTACT PAGE ── */
     'contact.eyebrow':   { en: 'Get in Touch',   mn: 'Холбоо барих' },
@@ -238,7 +242,7 @@
     'footer.nav.cats':     { en: 'Categories',    mn: 'Ангилал' },
     'footer.nav.designers':{ en: 'Designers',     mn: 'Дизайнерууд' },
     'footer.nav.about':    { en: 'About',         mn: 'Бидний тухай' },
-    'footer.nav.inquiry':  { en: 'Start Inquiry', mn: 'Лавлага илгээх' },
+    'footer.nav.inquiry':  { en: 'Start Inquiry', mn: 'Хүсэлт илгээх' },
     'footer.cat.title':    { en: 'Categories',    mn: 'Ангилал' },
     'footer.contact.title':{ en: 'Contact',       mn: 'Холбоо барих' },
     'footer.addr.lbl':     { en: 'Address',       mn: 'Хаяг' },
@@ -252,12 +256,12 @@
     'misc.not.found':    { en: 'Not found',           mn: 'Олдсонгүй' },
     'misc.back.projects':{ en: 'Back to Projects',    mn: 'Төслүүд рүү буцах' },
     'misc.back.des':     { en: 'Back to Designers',   mn: 'Дизайнерууд рүү буцах' },
-    
+
     /* ── SOCIAL & COMPANY INFO ── */
     'social.instagram':  { en: '@vivace.design',      mn: '@vivace.design' },
     'social.facebook':   { en: 'Vivace Design',       mn: 'Vivace Design' },
-    'company.stat.years':{ en: '15 years',            mn: '15 жил' },
-    'company.stat.desc.years': { en: 'Experience in the industry', mn: 'Салбартаа ажилсан туршлага' },
+    'company.stat.years':{ en: '2024',                mn: '2024' },
+    'company.stat.desc.years': { en: 'Established',  mn: 'Үүссэн он' },
     'company.stat.ontime':{ en: '100%',               mn: '100%' },
     'company.stat.desc.ontime': { en: 'Projects delivered on time', mn: 'Төслүүдийг хугацаанд нь хүлээлгэн өгсөн' },
     'company.stat.experts':{ en: '150+',              mn: '150+' },
@@ -270,7 +274,7 @@
      CORE ENGINE
   ───────────────────────────────────────────────────────── */
   var LANG_KEY = 'vd_lang';
-  var currentLang = localStorage.getItem(LANG_KEY) || 'en';
+  var currentLang = localStorage.getItem(LANG_KEY) || 'mn';
 
   /** Get translation value for a key */
   function t(key) {
@@ -279,39 +283,99 @@
     return entry[currentLang] || entry['en'] || null;
   }
 
-  /** Apply data-i18n="key" — updates text content, preserving child elements */
+  /**
+   * Check if an element has been processed by VivaceSplit.
+   * VivaceSplit wraps lines in <div style="overflow:hidden"> wrappers
+   * that contain <div class="rvl-line"> children.
+   */
+  function isVivaceSplit(el) {
+    // Check for overflow:hidden wrapper children (VivaceSplit line wrappers)
+    var children = el.children;
+    if (!children.length) return false;
+    for (var i = 0; i < children.length; i++) {
+      var child = children[i];
+      // VivaceSplit creates div wrappers with overflow:hidden style
+      if (child.tagName === 'DIV' &&
+          (child.style.overflow === 'hidden' ||
+           child.classList.contains('rvl-line') ||
+           child.classList.contains('vd-line') ||
+           child.classList.contains('vd-char'))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Apply translation to a VivaceSplit-processed element.
+   * Instead of destroying the split structure, we update the text
+   * inside the line spans while preserving GSAP animation targets.
+   */
+  function translateSplitEl(el, val) {
+    // Strategy: clear the VivaceSplit wrappers and set plain text.
+    // GSAP animation has already completed (yPercent is 0) by the time
+    // user clicks language toggle, so we can safely reset.
+    // Remove all children and set plain text — GSAP will re-animate on next scroll.
+    el.innerHTML = '';
+    el.textContent = val;
+    // Re-expose for opacity: ensure element is visible
+    el.style.opacity = '1';
+    el.style.transform = '';
+  }
+
+  /**
+   * Apply data-i18n="key" — updates text content safely.
+   * Handles: VivaceSplit elements, btn-arrow spans, simple text.
+   */
   function translateEl(el) {
     var key = el.getAttribute('data-i18n');
     if (!key) return;
     var val = t(key);
     if (val === null) return;
 
-    // Find first text node and update it, preserving child elements (e.g. btn-arrow)
-    var updated = false;
-    for (var i = 0; i < el.childNodes.length; i++) {
-      var node = el.childNodes[i];
-      if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
-        node.nodeValue = val;
-        updated = true;
-        break;
+    // 1. VivaceSplit-processed element — safely reset
+    if (isVivaceSplit(el)) {
+      translateSplitEl(el, val);
+      return;
+    }
+
+    // 2. Elements with .btn-arrow child spans — preserve the arrow
+    var arrowSpan = el.querySelector('span.btn-arrow');
+    if (arrowSpan) {
+      // Find and update first text node
+      for (var i = 0; i < el.childNodes.length; i++) {
+        var node = el.childNodes[i];
+        if (node.nodeType === 3 && node.nodeValue.trim() !== '') {
+          node.nodeValue = val + ' ';
+          return;
+        }
       }
+      // No text node found — insert before arrow
+      el.insertBefore(document.createTextNode(val + ' '), arrowSpan);
+      return;
     }
-    // If no text node found and no children, set textContent
-    if (!updated && el.children.length === 0) {
-      el.textContent = val;
+
+    // 3. Elements that contain only span children with data-i18n
+    //    (e.g. <a data-i18n="key"><span data-i18n="subkey">...</span><span class="btn-arrow"></span></a>)
+    //    Skip — children will be handled individually
+    var onlySpanChildren = el.children.length > 0 && el.childNodes.length === el.children.length;
+    if (onlySpanChildren && !el.querySelector('span.btn-arrow')) {
+      // This element only has element children, no text nodes — skip
+      // (its children are translated separately)
+      return;
     }
+
+    // 4. Simple element — set textContent directly
+    el.textContent = val;
   }
 
   /** Apply data-en/data-mn="..." legacy inline attributes */
   function translateLegacyEl(el) {
     var val = el.getAttribute('data-' + currentLang);
-    if (!val) {
-      // fallback to en
-      val = el.getAttribute('data-en');
-    }
+    if (!val) val = el.getAttribute('data-en');
     if (!val) return;
 
-    // Preserve child elements (btn-arrow spans etc.)
+    // Preserve child elements
     var updated = false;
     for (var i = 0; i < el.childNodes.length; i++) {
       var node = el.childNodes[i];
@@ -357,11 +421,10 @@
     // data-i18n-ph placeholders
     document.querySelectorAll('[data-i18n-ph]').forEach(translatePlaceholder);
 
-    // Legacy data-en / data-mn attributes (covers any remaining old markup)
+    // Legacy data-en / data-mn attributes
     document.querySelectorAll('[data-en]').forEach(translateLegacyEl);
 
-    // Process step bodies: the container has data-en/data-mn,
-    // but the visible text is inside a <p> child — update the <p> too
+    // Process step bodies: container has data-en/data-mn, visible text is in <p> child
     document.querySelectorAll('.process-step-body').forEach(function(el) {
       var val = el.getAttribute('data-' + currentLang) || el.getAttribute('data-en');
       if (!val) return;
@@ -369,7 +432,38 @@
       if (p) p.textContent = val;
     });
 
+    // Select options with data-i18n
+    document.querySelectorAll('option[data-i18n]').forEach(function(option) {
+      var key = option.getAttribute('data-i18n');
+      var val = t(key);
+      if (val !== null) option.textContent = val;
+    });
+
+    // Stat labels: elements like <div class="stat-label" data-i18n="stats.projects">
+    // These may show raw key text if SSR rendered {s.key} — override with translation
+    document.querySelectorAll('.stat-label[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      var val = t(key);
+      if (val !== null) el.textContent = val;
+    });
+
     // Update active state on all lang-btn elements
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
+    });
+  }
+
+  /** Wire language toggle buttons — call this any time new buttons appear in DOM */
+  function wireButtons() {
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      // Avoid double-binding
+      if (btn.dataset.i18nBound) return;
+      btn.dataset.i18nBound = '1';
+      btn.addEventListener('click', function() {
+        setLang(this.getAttribute('data-lang'));
+      });
+    });
+    // Reflect current active state
     document.querySelectorAll('.lang-btn').forEach(function(btn) {
       btn.classList.toggle('active', btn.getAttribute('data-lang') === currentLang);
     });
@@ -381,7 +475,8 @@
     currentLang = lang;
     localStorage.setItem(LANG_KEY, lang);
     applyAll();
-    // Subtle GSAP feedback animation on toggles
+    wireButtons();
+    // GSAP feedback on toggles
     if (window.gsap) {
       document.querySelectorAll('.lang-toggle-wrap').forEach(function(w) {
         gsap.fromTo(w, { scale: 0.88 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
@@ -389,32 +484,40 @@
     }
   }
 
-  /** Public API */
+  /** Public API — exposed on window so app.js can call applyAll() after animations */
   window.VDi18n = {
     t: t,
     setLang: setLang,
     getLang: function() { return currentLang; },
     applyAll: applyAll,
+    wireButtons: wireButtons,
     T: T
   };
 
   /* ─────────────────────────────────────────────────────────
-     INIT
+     INIT — robust timing strategy
   ───────────────────────────────────────────────────────── */
   function init() {
-    // Wire all lang-btn elements
-    document.querySelectorAll('.lang-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        setLang(this.getAttribute('data-lang'));
-      });
-    });
-    // Apply saved language on load
+    wireButtons();
     applyAll();
+
+    // Re-wire after 800ms to catch any late-rendered buttons (e.g. after GSAP entrance)
+    setTimeout(function() {
+      wireButtons();
+      applyAll();
+    }, 800);
+
+    // Re-wire after 3000ms to catch buttons after full hero animation completes
+    setTimeout(function() {
+      wireButtons();
+      applyAll();
+    }, 3000);
   }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
+    // DOM already loaded — run immediately AND after a short delay
     init();
   }
 

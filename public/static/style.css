@@ -626,7 +626,9 @@ input, textarea, select {
   margin-bottom: 1.5rem;
   opacity: 0;
   animation: heroFadeUp 1s var(--ease-out-quart) 1.4s forwards;
-  max-width: 14ch;
+  max-width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 .hero-title em {

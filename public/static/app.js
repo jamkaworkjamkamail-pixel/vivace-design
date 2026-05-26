@@ -139,25 +139,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const actions  = hero.querySelector('.hero-actions');
     const cue      = hero.querySelector('.hero-scroll-cue');
 
-    // Split title into lines for mask-wipe
-    let titleLines = null;
-    if (titleEl && typeof VivaceSplit !== 'undefined') {
-      try {
-        const split = new VivaceSplit(titleEl, { type: 'lines', linesClass: 'split-line' });
-        titleLines = split.lines;
-        if (titleLines && titleLines.length > 0) {
-          titleLines.forEach(function(line) {
-            const wrap = document.createElement('div');
-            wrap.style.cssText = 'overflow:hidden; display:block;';
-            line.parentNode.insertBefore(wrap, line);
-            wrap.appendChild(line);
-            gsap.set(line, { yPercent: 106 });
-          });
-        } else {
-          titleLines = null;
-        }
-      } catch(e) { titleLines = null; }
-    }
+    // DISABLED VivaceSplit for hero title to prevent text breaking issues
+    // Keep title as plain text for better language switching support
+    const titleLines = null;
 
     const tl = gsap.timeline({
       defaults: { ease: 'noomoOut' },
@@ -176,9 +160,8 @@ window.addEventListener('DOMContentLoaded', function () {
         { opacity: 1, x: 0, duration: 0.8 }, 0.55);
     }
 
-    if (titleLines && titleLines.length) {
-      tl.to(titleLines, { yPercent: 0, duration: 1.15, stagger: 0.13, ease: 'noomo' }, 0.8);
-    } else if (titleEl) {
+    // Simple fade-up animation for title (no split)
+    if (titleEl) {
       gsap.set(titleEl, { opacity: 0, y: 40 });
       tl.to(titleEl, { opacity: 1, y: 0, duration: 1.15 }, 0.8);
     }
@@ -226,7 +209,12 @@ window.addEventListener('DOMContentLoaded', function () {
     initRevealBatch();
     initTextScramble();
     initHScrollText();
-    // i18n is handled by /static/i18n.js (VDi18n)
+    // Re-apply i18n AFTER all animations are set up
+    // This ensures VivaceSplit-processed elements are correctly translated
+    if (window.VDi18n) {
+      window.VDi18n.wireButtons();
+      window.VDi18n.applyAll();
+    }
   }
 
   /* ─────────────────────────────────────────────────────────

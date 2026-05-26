@@ -50,26 +50,26 @@ app.get('/', (c) => {
 
         <div class="hero-content container">
           <div class="hero-eyebrow">
-            <span data-i18n="hero.eyebrow">Premium Interior Design Studio</span>
+            <span data-i18n="hero.eyebrow">Тэргүүний Интерьер Дизайн Студи</span>
           </div>
-          <h1 class="hero-title">
-            <span data-i18n="hero.title.1">Your dream space</span> <em data-i18n="hero.title.2">starts here</em>
+          <h1 class="hero-title" data-i18n="hero.title">
+            Таны мөрөөдлийн орон сууц эндээс эхэлнэ
           </h1>
           <p class="hero-subtitle" data-i18n="hero.subtitle">
-            We create premium interior environments shaped with clarity, warmth, and lasting identity.
-            Every space is a collaboration between craft and vision.
+            Тодорхой байдал, дулаан мэдрэмж, тогтвортой онцлогоор хийгдсэн дотоод орчинг бид бүтээдэг.
+            Бүх орон зай бол гар урлал ба алсын харааны хамтын бүтээл юм.
           </p>
           <div class="hero-actions">
             <a href="/projects" class="btn-primary">
-              <span data-i18n="hero.btn.projects">View Projects</span> <span class="btn-arrow"></span>
+              <span data-i18n="hero.btn.projects">Төслүүд үзэх</span> <span class="btn-arrow"></span>
             </a>
-            <a href="/inquiry" class="btn-outline" data-i18n="hero.btn.inquiry">Start Inquiry</a>
+            <a href="/inquiry" class="btn-outline" data-i18n="hero.btn.inquiry">Хүсэлт илгээх</a>
           </div>
         </div>
 
         <div class="hero-scroll-cue">
           <div class="scroll-line"></div>
-          <span data-i18n="hero.scroll">Scroll</span>
+          <span data-i18n="hero.scroll">Гүйлгэх</span>
         </div>
       </section>
 
@@ -90,7 +90,7 @@ app.get('/', (c) => {
             { en: 'Work Room',      mn: 'Ажлын өрөө' },
           ].map((item, i) => (
             <>
-              <span class="noomo-marquee-item" data-en={item.en} data-mn={item.mn}>{item.en}</span>
+              <span class="noomo-marquee-item" data-en={item.en} data-mn={item.mn}>{item.mn}</span>
               <span class="noomo-marquee-sep"></span>
             </>
           ))}
@@ -107,28 +107,29 @@ app.get('/', (c) => {
                 alt="Vivace Design Interior studio"
                 loading="lazy"
               />
-              <div class="intro-tag" data-i18n="intro.tag">Est. Ulaanbaatar</div>
+              <div class="intro-tag" data-i18n="intro.tag">Үүссэн 2024 · Улаанбаатар</div>
             </div>
             <div class="intro-text-wrap">
-              <div class="eyebrow reveal" data-i18n="intro.eyebrow">Studio Narrative</div>
+              <div class="eyebrow reveal" data-i18n="intro.eyebrow">Vivace-д тавтай морил</div>
               <h2 class="intro-statement reveal reveal-delay-1" data-i18n="intro.headline">
-                Interior design shaped with clarity, warmth, and identity.
+                Орон зайг өөрчилж, амьдралыг өргөмжлөх
               </h2>
               <div class="intro-divider reveal reveal-delay-2"></div>
               <p class="body-text reveal reveal-delay-3" data-i18n="intro.p1">
-                Vivace Design Interior is a premium interior design studio based in Ulaanbaatar.
-                We create considered environments for residential, commercial, and hospitality clients —
-                spaces that balance beauty with the real rhythms of daily life.
+                Vivace Design Interior бол Улаанбаатарт байрладаг тэргүүний дотоод дизайн студи юм.
+                Бид болоовсронгуй байдал, ажиллагаа болон мөнхийн дизайнаар хослуулсан гоёмсог орон зай бүтээхэд мэргэшсэн.
+                Тансаг орон сууц, орчин үеийн оффис, эелдэг кофе шоп, боловсронгуй шүдний эмнэлэг гэх мэт 
+                та бүхний алсын харааг нарийн зүйлд анхаарал хандуулснаар бодит болгодог.
               </p>
               <br />
               <p class="body-text reveal reveal-delay-4" data-i18n="intro.p2">
-                Our work is driven by a deep respect for materiality, proportion, and light.
-                We believe the best interiors are those that feel both timeless and deeply personal —
-                environments that elevate the everyday.
+                Манай гурван онцгой дизайнерын баг нь олон талт туршлага болон таны амьдралын хэв маяг, 
+                мөрөөдөлтэй уялдсан дотоод засал дизайныг бүтээх хайр дурлалаар хангадаг. Төсөл бүр бүтээлч байдал, 
+                нарийвчлал, гар урлал нэгдэж та олон жилийн турш хайрлах орон зайг хүргэдэг хамтын аялал юм.
               </p>
               <br />
               <a href="/about" class="btn-outline reveal reveal-delay-5" style="margin-top: 1rem; display: inline-flex;">
-                <span data-i18n="intro.btn">Our Approach</span> <span class="btn-arrow"></span>
+                <span data-i18n="intro.btn">Бидний тухай илүү ихийг мэдэх</span> <span class="btn-arrow"></span>
               </a>
             </div>
           </div>
@@ -914,13 +915,13 @@ app.get('/about', (c) => {
       <Nav transparent={true} />
       <div style="min-height: 100vh;">
         {/* Hero */}
-        <div style="height: 60svh; min-height: 400px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding-bottom: 4rem; background: var(--deep-olive);">
+        <div style="height: 65svh; min-height: 500px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--deep-olive);">
           <div style="position: absolute; inset: 0;">
-            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80" alt="Vivace Design studio" style="width:100%;height:100%;object-fit:cover;opacity:0.5;" />
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=80" alt="Vivace Design studio" style="width:100%;height:100%;object-fit:cover;opacity:0.4;" />
           </div>
-          <div class="container" style="position: relative; z-index: 1;">
-            <div class="eyebrow" style="color: var(--sage-stone);" data-i18n="about.eyebrow">Studio</div>
-            <h1 class="headline-xl" style="color: var(--warm-plaster); margin-top: 0.5rem;" data-i18n="about.headline">About Vivace</h1>
+          <div class="container" style="position: relative; z-index: 1; text-align: center;">
+            <div class="eyebrow" style="color: var(--sage-stone); font-size: 0.9rem;" data-i18n="about.eyebrow">Vivace-д тавтай морил</div>
+            <h1 class="headline-xl" style="color: var(--warm-plaster); margin-top: 1rem; font-size: clamp(2.5rem, 6vw, 4.5rem);" data-i18n="about.headline">Амьдралыг өөрчлөх гоёмсог орон зайг бүтээх</h1>
           </div>
         </div>
 
@@ -929,18 +930,24 @@ app.get('/about', (c) => {
           <div class="container">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;">
               <div>
-                <div class="eyebrow reveal" data-i18n="about.who.eye">Who We Are</div>
+                <div class="eyebrow reveal" data-i18n="about.who.eye">Манай түүх</div>
                 <h2 class="headline-md reveal reveal-delay-1" style="margin-bottom: 2rem;" data-i18n="about.who.h2">
-                  A premium interior design studio with a deep commitment to craft and beauty.
+                  Алсын хараа ба гар урлал уулзах газар
                 </h2>
                 <p class="body-text reveal reveal-delay-2" style="margin-bottom: 1.5rem;" data-i18n="about.who.p1">
-                  Vivace Design Interior was founded on a singular belief: that beautifully considered interior environments have the power to transform how people feel, work, and live.
+                  "Вивачи Артэ" ХХК нь үүсгэн байгуулагч Л.Уянга болон Б.Төгөлдөр нарын олон жилийн туршлага, хуримтлуулсан мэдлэг, нэгдмэл үнэ цэнэ, стратегийн зорилгын хүрээнд 2024 онд "Вивачи Артэ" ХХК-ийг байгуулж, интерьер зураг төсөл, гүйцэтгэл, захиалгат тавилга үйлдвэрлэлийн чиглэлээр үйл ажиллагаагаа шинэ шатанд гарган ажиллаж байна.
                 </p>
                 <p class="body-text reveal reveal-delay-3" style="margin-bottom: 1.5rem;" data-i18n="about.who.p2">
-                  Our studio brings together three exceptionally talented interior designers — Жанцанноров, Төгөлдөр, and Анхбаяр — each with a distinctive creative voice and a shared commitment to excellence.
+                  Бид оффис, үйлчилгээний талбай, амины орон сууц, ресторан зэрэг төрөл бүрийн орон зайд тохирсон интерьер болон тавилгын шийдлийг зураг төслөөс эхлэн үйлдвэрлэл, угсралт, түлхүүр гардуулах хүртэл логикоор нь хэрэгжүүлж, олон төслийг амжилттай хүлээлгэн өгөөд байна.
                 </p>
-                <p class="body-text reveal reveal-delay-4" data-i18n="about.who.p3">
-                  Every project we undertake begins with a genuine curiosity about the people who will inhabit the space. From that understanding, we build design narratives that are both precise and deeply human.
+                <p class="body-text reveal reveal-delay-4" style="margin-bottom: 1.5rem;" data-i18n="about.who.p3">
+                  Манай үйлдвэр нь олон улсын чанар стандартад нийцсэн бүрэн автомат тоног төхөөрөмжөөр тоноглогдсон бөгөөд будаг, модон хийц болон бүх төрлийн захиалгат тавилгыг өндөр чанартайгаар үйлдвэрлэх хүчин чадалтай.
+                </p>
+                <p class="body-text reveal reveal-delay-5" style="margin-bottom: 1.5rem;" data-i18n="about.who.p4">
+                  Бид туршлага, ур чадвар, бүтээлч сэтгэлгээ, шинэ санал санаачилгыг эрхэмлэн, салбартаа өрсөлдөх чадвартай, мэргэжлийн багийг бүрдүүлэн ажиллаж байна. Мөн материалын сонголт, төлөвлөлтийн шийдэл бүрд ухаалаг, хариуцлагатай хэрэглээг чухалчилж, орон зай бүрд гоо зүй болон хэрэглээний төгс тэнцвэрийг бий болгохыг зорьдог.
+                </p>
+                <p class="body-text reveal reveal-delay-6" data-i18n="about.who.p5">
+                  Бид харилцагч байгууллагуудтай урт хугацааны түншлэл бий болгож, найдвартай гүйцэтгэл, чанартай бүтээгдэхүүн, нэгдсэн удирдлагатай үйлчилгээний шийдлээр үнэ цэнэ бүтээхийг зорин ажиллаж байна.
                 </p>
               </div>
               <div>
@@ -955,14 +962,14 @@ app.get('/about', (c) => {
         {/* Values */}
         <div style="padding: var(--section-pad) 0; background: var(--cream);">
           <div class="container">
-            <div class="eyebrow reveal" data-i18n="about.values.eye">What We Believe</div>
-            <h2 class="headline-lg reveal reveal-delay-1" style="margin-bottom: 4rem;" data-i18n="about.values.h2">Design Values</h2>
+            <div class="eyebrow reveal" data-i18n="about.values.eye">Манай арга барил</div>
+            <h2 class="headline-lg reveal reveal-delay-1" style="margin-bottom: 4rem;" data-i18n="about.values.h2">Бидний үнэт зүйлс</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 3rem;">
               {[
-                { titleKey: 'about.v1.title', textKey: 'about.v1.text', title: 'Material Honesty', text: 'We work with materials that have genuine character — stone, timber, linen, plaster. We let them speak.' },
-                { titleKey: 'about.v2.title', textKey: 'about.v2.text', title: 'Spatial Clarity',  text: 'Great interiors are defined by what is not there as much as what is. We value negative space as a design element.' },
-                { titleKey: 'about.v3.title', textKey: 'about.v3.text', title: 'Human Scale',      text: 'Every proportion, every surface, every object is considered in relation to the human body and human experience.' },
-                { titleKey: 'about.v4.title', textKey: 'about.v4.text', title: 'Timeless Restraint', text: 'We resist trend. We design for permanence — spaces that will remain beautiful and relevant for decades.' },
+                { titleKey: 'about.v1.title', textKey: 'about.v1.text', title: 'Хувь хүний дизайн', text: 'Бид орон зай бүр түүнийг эзэмшигч хүмүүсийн зан чанар, хэрэгцээг тусгах ёстой гэдэгт итгэдэг. Манай дизайнууд танд тохируулагдсан байдаг.' },
+                { titleKey: 'about.v2.title', textKey: 'about.v2.text', title: 'Чанар ба гар урлал',  text: 'Бид дэлхийн шилдэг материал болон ур чадвартай урчуудтай хамтарч нарийн зүйл бүрийг төгс гүйцэтгэдэг.' },
+                { titleKey: 'about.v3.title', textKey: 'about.v3.text', title: 'Мөнхийн дэгжин байдал',      text: 'Манай дизайнууд трендээс давж, олон жилийн турш загвар, хамаатай хэвээр үлдэх дотоод засал дизайныг бүтээдэг.' },
+                { titleKey: 'about.v4.title', textKey: 'about.v4.text', title: 'Хамтын процесс', text: 'Бид агуу дизайн хамтын ажиллагаагаар бий болдог гэдэгт итгэдэг. Таны алсын хараа болон манай туршлага нэгдэж ер бусын үр дүнг бий болгодог.' },
               ].map(v => (
                 <div class="reveal" key={v.title}>
                   <div style="width: 2rem; height: 1px; background: var(--heritage-olive); margin-bottom: 1.2rem;"></div>

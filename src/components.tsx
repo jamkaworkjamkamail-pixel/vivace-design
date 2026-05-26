@@ -5,21 +5,19 @@ export const Nav = ({ transparent = false }: { transparent?: boolean }) => (
     <nav class={`site-nav ${transparent ? 'transparent hero-nav' : ''}`}>
       <a href="/" class="nav-logo">Vivace Design</a>
       <ul class="nav-links">
-        <li><a href="/" data-i18n="nav.home">Home</a></li>
-        <li><a href="/projects" data-i18n="nav.projects">Projects</a></li>
-        <li><a href="/categories" data-i18n="nav.categories">Categories</a></li>
-        <li><a href="/designers" data-i18n="nav.designers">Designers</a></li>
-        <li><a href="/about" data-i18n="nav.about">About</a></li>
-        <li><a href="/contact" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="/" data-i18n="nav.home">Нүүр</a></li>
+        <li><a href="/projects" data-i18n="nav.projects">Төслүүд</a></li>
+        <li><a href="/categories" data-i18n="nav.categories">Ангилал</a></li>
+        <li><a href="/designers" data-i18n="nav.designers">Дизайнерууд</a></li>
+        <li><a href="/about" data-i18n="nav.about">Бидний тухай</a></li>
+        <li><a href="/contact" data-i18n="nav.contact">Холбоо барих</a></li>
       </ul>
       <div class="nav-right">
-        {/* Language toggle — two separate buttons, CSS + JS controls active */}
-        <div class="lang-toggle-wrap" aria-label="Select language">
-          <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
-          <span class="lang-sep" aria-hidden="true">/</span>
-          <button class="lang-btn" data-lang="mn" aria-label="Монгол">МН</button>
+        <div class="lang-toggle-wrap">
+          <button class="lang-btn active" data-lang="mn" aria-label="Монгол">МН</button>
+          <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
         </div>
-        <a href="/inquiry" class="nav-inquiry-btn btn-outline" data-i18n="nav.inquiry">Inquiry</a>
+        <a href="/inquiry" class="nav-inquiry-btn btn-outline" data-i18n="nav.inquiry">Холбогдох</a>
       </div>
       <div class="nav-toggle" role="button" aria-label="Menu" tabindex={0}>
         <span></span>
@@ -30,18 +28,16 @@ export const Nav = ({ transparent = false }: { transparent?: boolean }) => (
 
     {/* Mobile Menu */}
     <div class="mobile-menu" role="dialog" aria-modal="true">
-      <a href="/" data-i18n="nav.home">Home</a>
-      <a href="/projects" data-i18n="nav.projects">Projects</a>
-      <a href="/categories" data-i18n="nav.categories">Categories</a>
-      <a href="/designers" data-i18n="nav.designers">Designers</a>
-      <a href="/about" data-i18n="nav.about">About</a>
-      <a href="/contact" data-i18n="nav.contact">Contact</a>
-      <a href="/inquiry" data-i18n="nav.inquiry">Inquiry</a>
-      {/* Mobile language toggle */}
-      <div class="mobile-lang-wrap lang-toggle-wrap">
-        <button class="lang-btn mobile-lang-btn active" data-lang="en" aria-label="English">English</button>
-        <span class="lang-sep" aria-hidden="true">/</span>
-        <button class="lang-btn mobile-lang-btn" data-lang="mn" aria-label="Монгол">Монгол</button>
+      <a href="/" data-i18n="nav.home">Нүүр</a>
+      <a href="/projects" data-i18n="nav.projects">Төслүүд</a>
+      <a href="/categories" data-i18n="nav.categories">Ангилал</a>
+      <a href="/designers" data-i18n="nav.designers">Дизайнерууд</a>
+      <a href="/about" data-i18n="nav.about">Бидний тухай</a>
+      <a href="/contact" data-i18n="nav.contact">Холбоо барих</a>
+      <a href="/inquiry" data-i18n="nav.inquiry">Холбогдох</a>
+      <div class="lang-toggle-wrap" style="margin-top: 2rem; display: flex; gap: 0.5rem; justify-content: center;">
+        <button class="lang-btn active" data-lang="mn" aria-label="Монгол">МН</button>
+        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
       </div>
     </div>
   </>
@@ -136,15 +132,12 @@ export const InquirySection = () => (
         </div>
         <div class="inquiry-contact-block reveal reveal-delay-2">
           <div class="inquiry-contact-row">
-            <span class="inquiry-contact-label" data-i18n="inquiry.label.email">Email</span>
             <span class="inquiry-contact-val">vivacedesign07@gmail.com</span>
           </div>
           <div class="inquiry-contact-row">
-            <span class="inquiry-contact-label" data-i18n="inquiry.label.phone">Phone</span>
             <span class="inquiry-contact-val">7272 3066 · 9006 3066</span>
           </div>
           <div class="inquiry-contact-row">
-            <span class="inquiry-contact-label" data-i18n="inquiry.label.hours">Studio Hours</span>
             <span class="inquiry-contact-val" data-i18n="inquiry.hours.val">Mon–Fri, 09:00–18:00</span>
           </div>
         </div>
