@@ -34,7 +34,7 @@ export const designers: Designer[] = [
     bio: 'Жанцанноров is a visionary interior architect whose work is defined by the precise balance of light, material, and spatial rhythm. With an innate ability to read a space, he transforms ordinary environments into deeply personal sanctuaries. His designs speak with restraint and confidence.',
     approach: 'I believe every space has a latent identity — my work is about uncovering it. I use natural materials, considered proportions, and carefully orchestrated light to create interiors that feel both timeless and deeply alive.',
     specialties: ['Residential', 'Hospitality', 'Commercial', 'Office Design'],
-    portrait: 'https://www.genspark.ai/api/files/s/rfm0bMCB',
+    portrait: '/static/portraits/zhantsannurov.jpg',
     featured: true,
   },
   {
@@ -44,7 +44,7 @@ export const designers: Designer[] = [
     bio: 'Төгөлдөр brings a refined sensibility shaped by years of studying architectural form and material culture. His interiors are calm, curated, and richly textured — spaces where every object earns its place. He is drawn to quiet details that create lasting emotional impressions.',
     approach: 'Design is a conversation between material and memory. I work with tactile surfaces, earthy tones, and spatial clarity to build environments that ground the people who inhabit them. Every project is an act of precision and restraint.',
     specialties: ['Residential', 'Bedroom Design', 'Wellness Spaces', 'Retail'],
-    portrait: 'https://www.genspark.ai/api/files/s/C41DTMoS',
+    portrait: '/static/portraits/togoldor.jpg',
     featured: true,
   },
   {
@@ -54,7 +54,7 @@ export const designers: Designer[] = [
     bio: 'Анхбаяр is a creative force whose portfolio spans intimate domestic spaces to ambitious commercial environments. Her design language is fluid, emotionally warm, and deeply contemporary. She has a rare gift for making a space feel both curated and effortlessly livable.',
     approach: 'I design spaces that breathe. My process begins with understanding the life that will unfold inside a space — and from that understanding, I craft interiors that feel inevitable. I am guided by warmth, texture, and a deep respect for how people actually live.',
     specialties: ['Residential', 'Kids Rooms', 'Cafés & Coffee Shops', 'Dental Clinics'],
-    portrait: 'https://www.genspark.ai/api/files/s/A7yLJwAi',
+    portrait: '/static/portraits/ankhbayar.jpg',
     featured: true,
   },
 ]
