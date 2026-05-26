@@ -54,7 +54,7 @@ export const designers: Designer[] = [
     bio: 'Анхбаяр is a creative force whose portfolio spans intimate domestic spaces to ambitious commercial environments. Her design language is fluid, emotionally warm, and deeply contemporary. She has a rare gift for making a space feel both curated and effortlessly livable.',
     approach: 'I design spaces that breathe. My process begins with understanding the life that will unfold inside a space — and from that understanding, I craft interiors that feel inevitable. I am guided by warmth, texture, and a deep respect for how people actually live.',
     specialties: ['Residential', 'Kids Rooms', 'Cafés & Coffee Shops', 'Dental Clinics'],
-    portrait: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80',
+    portrait: 'https://www.genspark.ai/api/files/s/A7yLJwAi',
     featured: true,
   },
 ]
