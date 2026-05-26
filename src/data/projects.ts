@@ -44,7 +44,7 @@ export const designers: Designer[] = [
     bio: 'Төгөлдөр brings a refined sensibility shaped by years of studying architectural form and material culture. His interiors are calm, curated, and richly textured — spaces where every object earns its place. He is drawn to quiet details that create lasting emotional impressions.',
     approach: 'Design is a conversation between material and memory. I work with tactile surfaces, earthy tones, and spatial clarity to build environments that ground the people who inhabit them. Every project is an act of precision and restraint.',
     specialties: ['Residential', 'Bedroom Design', 'Wellness Spaces', 'Retail'],
-    portrait: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80',
+    portrait: 'https://www.genspark.ai/api/files/s/C41DTMoS',
     featured: true,
   },
   {
