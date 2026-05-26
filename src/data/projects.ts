@@ -34,7 +34,7 @@ export const designers: Designer[] = [
     bio: 'Жанцанноров is a visionary interior architect whose work is defined by the precise balance of light, material, and spatial rhythm. With an innate ability to read a space, he transforms ordinary environments into deeply personal sanctuaries. His designs speak with restraint and confidence.',
     approach: 'I believe every space has a latent identity — my work is about uncovering it. I use natural materials, considered proportions, and carefully orchestrated light to create interiors that feel both timeless and deeply alive.',
     specialties: ['Residential', 'Hospitality', 'Commercial', 'Office Design'],
-    portrait: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80',
+    portrait: 'https://www.genspark.ai/api/files/s/rfm0bMCB',
     featured: true,
   },
   {
