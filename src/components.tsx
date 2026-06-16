@@ -81,7 +81,7 @@ export const Footer = () => (
             <span class="footer-contact-label">Хаяг</span>
             <div class="footer-contact-val">
               ХУД 20-р хороо, Мишээл экспо,<br />
-              Little Venice shopping mall,<br />
+              Little Venice худалдааны төв,<br />
               M2 tower 15 давхарт, 1509 тоот
             </div>
           </div>

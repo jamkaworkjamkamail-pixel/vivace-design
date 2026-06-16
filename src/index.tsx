@@ -1017,7 +1017,7 @@ app.get('/inquiry', (c) => {
                   <span class="inquiry-detail-label">Студийн хаяг</span>
                   <div class="inquiry-detail-value">
                     ХУД 20-р хороо, Мишээл экспо,<br />
-                    Little Venice shopping mall,<br />
+                    Little Venice худалдааны төв,<br />
                     M2 tower 15 давхарт, 1509 тоот
                   </div>
                 </div>
@@ -1137,7 +1137,7 @@ app.get('/contact', (c) => {
                 <div class="eyebrow" style="margin-bottom: 0.5rem;">Студийн хаяг</div>
                 <div style="font-family: var(--font-serif); font-size: 1.1rem; font-weight: 300; color: var(--deep-olive); line-height: 1.5;">
                   ХУД 20-р хороо, Мишээл экспо,<br />
-                  Little Venice shopping mall,<br />
+                  Little Venice худалдааны төв,<br />
                   M2 tower 15 давхарт, 1509 тоот
                 </div>
               </div>

@@ -1,11 +1,11 @@
 import { jsxRenderer } from 'hono/jsx-renderer'
 
 export const renderer = jsxRenderer(({ children, title, description }) => {
-  const pageTitle = title ? `${title} — Vivace Design Interior` : 'Vivace Design Interior — Premium Interior Design Studio'
-  const metaDesc = description || 'Vivace Design Interior is a premium interior design studio in Ulaanbaatar, crafting beautifully considered spaces for residential and commercial clients.'
+  const pageTitle = title ? `${title} — Vivace Design Interior` : 'Vivace Design Interior — Тэргүүний Дотоод Дизайн Студи'
+  const metaDesc = description || 'Vivace Design Interior нь Улаанбаатарт байрладаг тэргүүний дотоод дизайн студи юм. Орон сууц болон арилжааны орчинд гоё гоёмсог, нарийн бодолцсон орон зайг бүтээдэг.'
 
   return (
-    <html lang="en">
+    <html lang="mn">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
