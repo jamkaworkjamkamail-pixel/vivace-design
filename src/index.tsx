@@ -679,7 +679,7 @@ app.get('/projects/:id', (c) => {
                 </a>
               </div>
               <div style="height: 360px; overflow: hidden;" class="reveal reveal-delay-2">
-                <img src={designer?.portrait} alt={designer?.name} style="width:100%; height:100%; object-fit: cover;" loading="lazy" />
+                <img src={designer?.portrait} alt={designer?.name} style="width:100%; height:100%; object-fit: cover; object-position: top center;" loading="lazy" />
               </div>
             </div>
           </div>
