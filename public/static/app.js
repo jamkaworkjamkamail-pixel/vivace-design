@@ -4,6 +4,12 @@
    Zero dark-screen bugs. All animations reliable.
    ============================================================ */
 
+/* ── Scroll restoration: always start at top on new page load ── */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 window.addEventListener('DOMContentLoaded', function () {
 
   /* ─────────────────────────────────────────────────────────
@@ -1114,7 +1120,7 @@ window.addEventListener('DOMContentLoaded', function () {
           { yPercent: 100 },
           {
             yPercent: 0, duration: 0.55, ease: 'noomo',
-            onComplete: function() { location.href = href; }
+            onComplete: function() { window.scrollTo(0, 0); location.href = href; }
           }
         );
       });
