@@ -1075,6 +1075,13 @@ input, textarea, select {
   cursor: pointer;
 }
 
+/* Filter cards: GSAP manages show/hide — CSS reveal must not conflict */
+.filter-project-card.reveal {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 .filter-card-image {
   overflow: hidden;
   aspect-ratio: 4/3;

@@ -860,13 +860,22 @@ window.addEventListener('DOMContentLoaded', function () {
         onComplete: function() { hiding.forEach(function(c) { c.style.display = 'none'; }); }
       });
 
-      showing.forEach(function(c) { c.style.display = ''; });
+      showing.forEach(function(c) {
+        c.style.display = '';
+        // .reveal class-тай бол visible болгоно — filter хийгдэхэд зураг харагдана
+        c.classList.add('visible');
+        // img lazy load force trigger
+        c.querySelectorAll('img[loading="lazy"]').forEach(function(img) {
+          if (img.dataset.src) { img.src = img.dataset.src; }
+        });
+      });
+
       gsap.fromTo(showing,
         { opacity: 0, y: 20, scale: 0.97 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.055, ease: 'noomoOut', delay: 0.2 }
+        { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.055, ease: 'noomoOut', delay: 0.15 }
       );
 
-      if (countEl) countEl.textContent = count + ' project' + (count !== 1 ? 's' : '');
+      if (countEl) countEl.textContent = count + ' төсөл';
     }
 
     tabs.forEach(function(tab) {
@@ -877,7 +886,10 @@ window.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    if (countEl) countEl.textContent = cards.length + ' projects';
+    if (countEl) countEl.textContent = cards.length + ' төсөл';
+
+    // Анхны load: бүх card-уудыг visible болгоно (reveal CSS conflict арилгах)
+    cards.forEach(function(c) { c.classList.add('visible'); });
 
     var hash = location.hash.replace('#', '');
     if (hash) {
