@@ -69,6 +69,7 @@ export const categories = [
   { slug: 'coffee-shop',    label: 'Кофе шоп' },
   { slug: 'fashion-shop',   label: 'Фэшн дэлгүүр' },
   { slug: 'restaurant',     label: 'Ресторан' },
+  { slug: 'kids-clinic',     label: 'Хүүхдийн байгууллага' },
 ]
 
 export const projects: Project[] = [
@@ -329,6 +330,30 @@ export const projects: Project[] = [
     area: '183.06 м²',
     style: 'Luxury Organic',
     materials: ['Терракота бархат', 'Мармар', 'Байгалийн чулуу', 'Зэс ягаан гэрэлтүүлэг', 'Мод самбар', '3D таазны бүтэц'],
+    featured: true,
+  },
+  {
+    id: 'first-maternity-kids-room',
+    title: '1-р Төрөх эмнэлэг — Хүүхдийн өрөө',
+    category: 'Хүүхдийн байгууллага',
+    categorySlug: 'kids-clinic',
+    designerId: 'togoldor',
+    coverImage: '/static/projects/kids-hospital/kids-05.jpg',
+    gallery: [
+      '/static/projects/kids-hospital/kids-05.jpg',
+      '/static/projects/kids-hospital/kids-06.jpg',
+      '/static/projects/kids-hospital/kids-01.jpg',
+      '/static/projects/kids-hospital/kids-03.jpg',
+      '/static/projects/kids-hospital/kids-02.jpg',
+      '/static/projects/kids-hospital/kids-04.jpg',
+      '/static/projects/kids-hospital/kids-07.jpg',
+    ],
+    description: 'Улаанбаатарын 1-р Төрөх эмнэлгийн хүүхдийн тасгийн дотоод дизайн нь минималист орчин үеийн хэл дээр бүтээгдсэн. Шар, ягаан, ногоон өнгийн зөөлөн тоглоомын өрөөнүүд, байгалийн мод ба цайвар бетоны хослол бүхий коридор, хүүхдийн хэмжээнд тохирсон ногоон мозайк угаалгын өрөо нь нялх хүүхэд ба эцэг эхчүүдэд нийцсэн дулаан, аюулгүй орчинг бүтээдэг. Дээлнэ үүлэн хэлбэрийн гэрэлтүүлэг, тоглоомын хана, буудлага мөргөлдөөний самбар бүхий тоглоомын булангууд нь хүүхэд бүрт хөгжилтэй, аюулгүй туршлага бий болгодог.',
+    location: '1-р Төрөх эмнэлэг, Улаанбаатар',
+    year: 2026,
+    area: '',
+    style: 'Minimal Kids',
+    materials: ['Байгалийн мод', 'Ногоон мозайк', 'Шар акцент', 'Зөөлөн хивс', 'Үүлэн гэрэлтүүлэг', 'Terrazzo шал'],
     featured: true,
   },
   {
