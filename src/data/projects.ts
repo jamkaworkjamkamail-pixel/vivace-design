@@ -17,6 +17,7 @@ export type Project = {
   designerId: string
   coverImage: string
   gallery: string[]
+  video?: string
   description: string
   location?: string
   year?: number
@@ -80,6 +81,7 @@ export const categories = [
   { slug: 'fashion-shop',   label: 'Фэшн дэлгүүр' },
   { slug: 'restaurant',     label: 'Ресторан' },
   { slug: 'kids-clinic',     label: 'Хүүхдийн байгууллага' },
+  { slug: 'pharmacy',        label: 'Эмийн сан' },
 ]
 
 export const projects: Project[] = [
@@ -261,6 +263,34 @@ export const projects: Project[] = [
     area: '155 м²',
     style: 'Modern',
     materials: ['Гантиг', 'Байгалийн царс', 'Алтан тоног', 'Цайвар бежийн будаг', 'Хар матлаг гадаргуу', 'Шил'],
+    featured: true,
+  },
+  {
+    id: 'pharmacy-yarmag',
+    title: 'Ярмаг — Эмийн сан',
+    category: 'Эмийн сан',
+    categorySlug: 'pharmacy',
+    designerId: 'tuguldur',
+    coverImage: '/static/projects/pharmacy-yarmag/py-03.jpg',
+    gallery: [
+      '/static/projects/pharmacy-yarmag/py-03.jpg',
+      '/static/projects/pharmacy-yarmag/py-09.jpg',
+      '/static/projects/pharmacy-yarmag/py-02.jpg',
+      '/static/projects/pharmacy-yarmag/py-05.jpg',
+      '/static/projects/pharmacy-yarmag/py-06.jpg',
+      '/static/projects/pharmacy-yarmag/py-04.jpg',
+      '/static/projects/pharmacy-yarmag/py-10.jpg',
+      '/static/projects/pharmacy-yarmag/py-01.jpg',
+      '/static/projects/pharmacy-yarmag/py-07.jpg',
+      '/static/projects/pharmacy-yarmag/py-08.jpg',
+    ],
+    video: '/static/projects/pharmacy-yarmag/py-video.mp4',
+    description: 'Ярмаг дүүрэгт байрлах энэхүү 58 м² орчин үеийн эмийн сан нь цагаан, бежийн тон болон алтан дэлгэрэнгүй зүйлсийн нарийн хослолоор бүтээгдсэн тансаг арилжааны орчин юм. Нээлттэй байрлалтай үндсэн худалдааны талбай нь ханан дагуух гэрэлтэй шилэн тавиур, гантиг гадаргутай тооцооны ширээ, болон пегборд хавтан тавиураар зохион байгуулагдаж эмийн бүтээгдэхүүнийг тодруулан харуулдаг. Оношилгоо, эмчилгээний тусдаа өрөөнүүд нь алтан шугамаар чимэглэсэн цагаан хана, LED нуман гэрэл, дугуй ширээ болон массажийн ортой зохицуулагдан эмчийн кабинетийн тансаг мэдрэмжийг бүтээдэг. Масс­аж буланд гурван бежийн өнгийн массажийн сандал, алтан хосолсон LED нуман гэрэл, аквариум болон хавтгай дэлгэцтэй зугаа цэнгэлийн системтэй тав тухтай хүлээлгийн орчин нь зочдод онцгой үйлчилгээний туршлагыг бий болгодог. Мозайк терраццо шал нь нийт орон зайг нэгтгэн орчин үеийн арилжааны дизайны өндөр стандартыг харуулдаг.',
+    location: 'Ярмаг, Улаанбаатар',
+    year: 2025,
+    area: '58 м²',
+    style: 'Modern',
+    materials: ['Цагаан будаг', 'Гантиг', 'Алтан тоног', 'Шилэн тавиур', 'Терраццо шал', 'LED гэрэл'],
     featured: true,
   },
   {

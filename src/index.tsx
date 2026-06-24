@@ -651,6 +651,26 @@ app.get('/projects/:id', (c) => {
           </div>
         </div>
 
+        {/* Video (if available) */}
+        {project.video && (
+          <div class="project-gallery-section" style="padding-bottom: 0;">
+            <div class="container">
+              <div class="eyebrow reveal" style="margin-bottom: 1.5rem;">Видео турш</div>
+              <div class="reveal" style="width: 100%; border-radius: 4px; overflow: hidden; background: #000;">
+                <video
+                  src={project.video}
+                  controls
+                  autoplay={false}
+                  muted
+                  playsinline
+                  preload="metadata"
+                  style="width: 100%; max-height: 70vh; display: block; object-fit: contain;"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Gallery */}
         <div class="project-gallery-section">
           <div class="container">
