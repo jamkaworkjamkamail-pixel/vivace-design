@@ -60,27 +60,23 @@ export const designers: Designer[] = [
 ]
 
 export const categories = [
-  { slug: 'kitchen',        label: 'Гал тогоо' },
-  { slug: 'living-room',    label: 'Зочны өрөө' },
-  { slug: 'kids-room',      label: 'Хүүхдийн өрөө' },
-  { slug: 'work-room',      label: 'Ажлын өрөө' },
+  { slug: 'apartment',      label: 'Орон сууц' },
+  { slug: 'single-house',   label: 'Хувийн байшин' },
   { slug: 'office',         label: 'Оффис' },
-  { slug: 'bathroom',       label: 'Угаалгын өрөө' },
-  { slug: 'master-bedroom', label: 'Унтлагын өрөө' },
   { slug: 'auto-mall',      label: 'Авто молл' },
   { slug: 'esport-center',  label: 'Е-спорт төв' },
   { slug: 'dental-clinic',  label: 'Шүдний клиник' },
   { slug: 'coffee-shop',    label: 'Кофе шоп' },
-  { slug: 'fashion-shop',    label: 'Фэшн дэлгүүр' },
-  { slug: 'restaurant',      label: 'Ресторан' },
+  { slug: 'fashion-shop',   label: 'Фэшн дэлгүүр' },
+  { slug: 'restaurant',     label: 'Ресторан' },
 ]
 
 export const projects: Project[] = [
   {
     id: 'stone-kitchen-ulaanbaatar',
-    title: 'Чулуу ба Дулаан — Гал тогоо',
-    category: 'Гал тогоо',
-    categorySlug: 'kitchen',
+    title: 'Чулуу ба Дулаан — Орон сууц',
+    category: 'Орон сууц',
+    categorySlug: 'apartment',
     designerId: 'zhantsannurov',
     coverImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80',
     gallery: [
@@ -98,9 +94,9 @@ export const projects: Project[] = [
   },
   {
     id: 'minimal-living-retreat',
-    title: 'Тайван Амьдрал — Зочны өрөө',
-    category: 'Зочны өрөө',
-    categorySlug: 'living-room',
+    title: 'Тайван Амьдрал — Орон сууц',
+    category: 'Орон сууц',
+    categorySlug: 'apartment',
     designerId: 'togoldor',
     coverImage: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80',
     gallery: [
@@ -118,9 +114,9 @@ export const projects: Project[] = [
   },
   {
     id: 'wonder-kids-room',
-    title: 'Гайхамшиг — Хүүхдийн өрөө',
-    category: 'Хүүхдийн өрөө',
-    categorySlug: 'kids-room',
+    title: 'Гайхамшиг — Хувийн байшин',
+    category: 'Хувийн байшин',
+    categorySlug: 'single-house',
     designerId: 'ankhbayar',
     coverImage: 'https://images.unsplash.com/photo-1555212697-194d092e3b8f?w=1200&q=80',
     gallery: [
@@ -138,9 +134,9 @@ export const projects: Project[] = [
   },
   {
     id: 'focus-work-studio',
-    title: 'Анхаарал — Гэрийн ажлын өрөө',
-    category: 'Ажлын өрөө',
-    categorySlug: 'work-room',
+    title: 'Анхаарал — Хувийн байшин',
+    category: 'Хувийн байшин',
+    categorySlug: 'single-house',
     designerId: 'zhantsannurov',
     coverImage: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1200&q=80',
     gallery: [
@@ -178,9 +174,9 @@ export const projects: Project[] = [
   },
   {
     id: 'sanctuary-bathroom',
-    title: 'Хоргодох газар — Угаалгын өрөө',
-    category: 'Угаалгын өрөө',
-    categorySlug: 'bathroom',
+    title: 'Хоргодох газар — Орон сууц',
+    category: 'Орон сууц',
+    categorySlug: 'apartment',
     designerId: 'ankhbayar',
     coverImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=80',
     gallery: [
@@ -198,9 +194,9 @@ export const projects: Project[] = [
   },
   {
     id: 'nocturne-master-bedroom',
-    title: 'Нойр — Унтлагын өрөө',
-    category: 'Унтлагын өрөө',
-    categorySlug: 'master-bedroom',
+    title: 'Нойр — Хувийн байшин',
+    category: 'Хувийн байшин',
+    categorySlug: 'single-house',
     designerId: 'zhantsannurov',
     coverImage: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80',
     gallery: [
@@ -425,9 +421,9 @@ export const projects: Project[] = [
   },
   {
     id: 'sage-kitchen-penthouse',
-    title: 'Зэлэн — Пентхаусын гал тогоо',
-    category: 'Гал тогоо',
-    categorySlug: 'kitchen',
+    title: 'Зэлэн — Пентхаус',
+    category: 'Орон сууц',
+    categorySlug: 'apartment',
     designerId: 'togoldor',
     coverImage: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=1200&q=80',
     gallery: [
