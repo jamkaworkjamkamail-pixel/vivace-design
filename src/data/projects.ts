@@ -58,16 +58,6 @@ export const designers: Designer[] = [
     portrait: '/static/portraits/ankhbayar.jpg',
     featured: true,
   },
-  {
-    id: 'tuguldur',
-    name: 'Төгөлдөр',
-    role: 'Дотоод дизайнер',
-    bio: 'Төгөлдөр бол орчин үеийн дизайны хэл дээр гүнзгий эзэмшилтэй, орон зай бүрийг амьдрах урлагийн туршлага болгон хувиргадаг авьяастай дизайнер юм. Тэрбээр хүмүүсийн амьдралын хэв маяг, хэрэгцээг нарийн судалж, тансаг боловч хялбар хэрэглээтэй орон зайг бүтээдэг. Орчин үеийн материал, гэрлийн архитектур, хүний масштабт тулгуурлан дизайнийг боловсруулдаг.',
-    approach: 'Орон зай бүр амьдрал бүтээдэг — миний зорилго тэр амьдралыг хялбар, тансаг, мартагдашгүй болгох явдал. Өнгө, материал, орон зайн зохион байгуулалтаар хүний сэтгэл хөдлөлийг удирдах боломжтой гэдэгт итгэдэг. Modern хэлбэр дэглэм дотор дулаан амьдрах орчинг бүтээх — энэ миний гол философи.',
-    specialties: ['Орон сууц', 'Унтлагын өрөө', 'Гал тогоо', 'Угаалгын өрөө'],
-    portrait: '/static/portraits/togoldor.jpg',
-    featured: true,
-  },
 ]
 
 export const categories = [
@@ -201,7 +191,7 @@ export const projects: Project[] = [
     title: 'Happy Residence — Минималист Орон сууц',
     category: 'Орон сууц',
     categorySlug: 'apartment',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/apartment-happy2/h2-05.jpg',
     gallery: [
       '/static/projects/apartment-happy2/h2-05.jpg',
@@ -231,7 +221,7 @@ export const projects: Project[] = [
     title: 'Global Town — Орчин үеийн Орон сууц',
     category: 'Орон сууц',
     categorySlug: 'apartment',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/apartment-globaltown/gt-17.jpg',
     gallery: [
       '/static/projects/apartment-globaltown/gt-17.jpg',
@@ -271,7 +261,7 @@ export const projects: Project[] = [
     title: 'Sunset Хотхон — Минималист Орон сууц',
     category: 'Орон сууц',
     categorySlug: 'apartment',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/apartment-sunset/ss-07.jpg',
     gallery: [
       '/static/projects/apartment-sunset/ss-07.jpg',
@@ -299,7 +289,7 @@ export const projects: Project[] = [
     title: 'Arvai Villa — Luxury Residence',
     category: 'Орон сууц',
     categorySlug: 'apartment',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/pharmacy-yarmag/py-03.jpg',
     gallery: [
       '/static/projects/pharmacy-yarmag/py-03.jpg',
@@ -327,7 +317,7 @@ export const projects: Project[] = [
     title: 'Mandala 360 — Минималист Оффис',
     category: 'Оффис',
     categorySlug: 'office',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/office-mandala/mn-07.jpg',
     gallery: [
       '/static/projects/office-mandala/mn-07.jpg',
@@ -603,7 +593,7 @@ export const projects: Project[] = [
     title: "Le'Luna — Гоо сайхны салон",
     category: 'Гоо сайхны салон',
     categorySlug: 'beauty-salon',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/salon-leluna/ll-04.jpg',
     gallery: [
       '/static/projects/salon-leluna/ll-04.jpg',
@@ -641,7 +631,7 @@ export const projects: Project[] = [
     title: 'Тэрэлж Зочид Буудал — Хүүхдийн өрөө',
     category: 'Хүүхдийн байгууллага',
     categorySlug: 'kids-clinic',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/kids-terelj/kt-01.jpg',
     gallery: [
       '/static/projects/kids-terelj/kt-01.jpg',
@@ -661,7 +651,7 @@ export const projects: Project[] = [
     title: 'Plazzo Хотхон — Орчин үеийн Орон сууц',
     category: 'Орон сууц',
     categorySlug: 'apartment',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/apartment-plazzo/pz-06.jpg',
     gallery: [
       '/static/projects/apartment-plazzo/pz-06.jpg',
@@ -715,7 +705,7 @@ export const projects: Project[] = [
     title: 'Sevenstar Хотхон — Классик Орон сууц',
     category: 'Орон сууц',
     categorySlug: 'apartment',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/apartment-sevenstar/sv-08.jpg',
     gallery: [
       '/static/projects/apartment-sevenstar/sv-08.jpg',
@@ -1015,7 +1005,7 @@ export const projects: Project[] = [
     title: 'Agarta Residence — Минималист Орон сууц',
     category: 'Орон сууц',
     categorySlug: 'apartment',
-    designerId: 'tuguldur',
+    designerId: 'togoldor',
     coverImage: '/static/projects/apartment-agarta/ag-03.jpg',
     gallery: [
       '/static/projects/apartment-agarta/ag-03.jpg',
