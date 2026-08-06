@@ -1507,7 +1507,7 @@ input, textarea, select {
   background: transparent;
   border: none;
   border-bottom: 1px solid var(--warm-plaster-dark);
-  padding: 0.7rem 0;
+  padding: 0.6rem 0;
   font-size: 0.9rem;
   color: var(--deep-olive);
   font-family: var(--font-sans);
@@ -1521,8 +1521,14 @@ input, textarea, select {
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: var(--warm-plaster-dark);
+  color: transparent;
   font-weight: 300;
+}
+
+.form-input:focus::placeholder,
+.form-textarea:focus::placeholder {
+  color: var(--warm-plaster-dark);
+  transition: color 0.2s ease;
 }
 
 .form-input:focus,
@@ -3110,28 +3116,26 @@ input, textarea, select {
   transition: none; /* handled by GSAP */
 }
 
-/* === FLOATING FORM LABELS ================================= */
+/* === FORM LABELS — static above input ==================== */
 .form-group {
   position: relative;
 }
 
 .form-group .form-label {
-  position: absolute;
-  top: 1.1rem;
-  left: 0;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
+  position: static;
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--sage-stone);
+  margin-bottom: 0.5rem;
   pointer-events: none;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-              color 0.3s ease,
-              font-size 0.3s ease;
-  transform-origin: left top;
+  transition: color 0.3s ease;
+  transform: none;
 }
 
 .form-group .form-label.floating {
-  transform: translateY(-22px) scale(0.78);
+  transform: none;
   color: var(--heritage-olive);
 }
 
