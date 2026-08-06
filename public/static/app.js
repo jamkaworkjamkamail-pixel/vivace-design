@@ -1063,25 +1063,82 @@ window.addEventListener('DOMContentLoaded', function () {
       if (input.value) activate();
     });
 
+    // ── EmailJS init (Public Key) ──────────────────────────────
+    // TODO: Replace with your actual EmailJS Public Key
+    // Get it from: emailjs.com → Account → API Keys
+    var EMAILJS_PUBLIC_KEY    = 'YOUR_PUBLIC_KEY';
+    var EMAILJS_SERVICE_ID    = 'YOUR_SERVICE_ID';
+    var EMAILJS_TEMPLATE_ID   = 'YOUR_TEMPLATE_ID';
+
+    if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+      window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+    }
+
     document.querySelectorAll('.inquiry-form form').forEach(function(form) {
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
         var btn     = form.querySelector('[type=submit]');
         var success = form.closest('.inquiry-form') && form.closest('.inquiry-form').querySelector('.form-success');
+        var errorBox = form.closest('.inquiry-form') && form.closest('.inquiry-form').querySelector('.form-error');
 
         if (btn) {
           gsap.to(btn, { opacity: 0.5, scale: 0.95, duration: 0.18 });
-          btn.textContent = 'Sending…';
+          btn.querySelector('span') ? btn.querySelector('span').textContent = 'Илгээж байна…' : (btn.textContent = 'Илгээж байна…');
           btn.disabled = true;
         }
 
-        try {
-          await fetch('/api/inquiries', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(new FormData(form)))
-          });
-        } catch(_) {}
+        var data = Object.fromEntries(new FormData(form));
+
+        // Budget label нэмэх
+        var budgetMap = {
+          'under-10m': '10 сая ₮-с доош',
+          '10-30m': '10–30 сая ₮',
+          '30-80m': '30–80 сая ₮',
+          '80m-plus': '80 сая ₮-с дээш',
+          '': 'Хэлэхгүй байх'
+        };
+        var timeMap = {
+          'morning': 'Өглөө (9–12)',
+          'afternoon': 'Өдөр (12–17)',
+          'evening': 'Орой (17–19)',
+          '': 'Дурын цагт'
+        };
+        data.budget_label    = budgetMap[data.budget]    || data.budget    || '—';
+        data.time_label      = timeMap[data.preferred_time] || data.preferred_time || '—';
+        data.submitted_at    = new Date().toLocaleString('mn-MN', { timeZone: 'Asia/Ulaanbaatar' });
+
+        var sent = false;
+
+        // ── EmailJS ───────────────────────────────────────────
+        if (window.emailjs && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') {
+          try {
+            await window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+              from_name:    data.name      || '',
+              from_email:   data.email     || '',
+              from_phone:   data.phone     || '',
+              category:     data.category  || '—',
+              budget:       data.budget_label,
+              preferred_time: data.time_label,
+              message:      data.message   || '',
+              submitted_at: data.submitted_at,
+              to_email:     'vivacedesign07@gmail.com',
+            });
+            sent = true;
+          } catch(err) {
+            console.warn('EmailJS error:', err);
+          }
+        }
+
+        // ── Fallback: /api/inquiries (console.log only) ───────
+        if (!sent) {
+          try {
+            await fetch('/api/inquiries', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(data)
+            });
+          } catch(_) {}
+        }
 
         form.reset();
         if (btn) gsap.to(btn, { opacity: 0, duration: 0.38, onComplete: function() { btn.style.display = 'none'; } });

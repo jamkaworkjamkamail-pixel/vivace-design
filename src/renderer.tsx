@@ -99,6 +99,8 @@ export const renderer = jsxRenderer(({ children, title, description }) => {
         <div id="page-transition"></div>
         <div id="scroll-progress"></div>
         {children}
+        {/* EmailJS — inquiry form → vivacedesign07@gmail.com */}
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
         <script src="/static/i18n.js"></script>
         <script src="/static/app.js"></script>
       </body>
