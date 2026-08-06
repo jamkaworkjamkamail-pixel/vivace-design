@@ -40,6 +40,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -49,6 +50,7 @@ body {
   font-weight: 300;
   line-height: 1.65;
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -719,6 +721,12 @@ input, textarea, select {
   grid-template-columns: 1fr 1fr;
   gap: 5rem;
   align-items: center;
+  min-width: 0;
+}
+
+.intro-grid > * {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .intro-image-wrap {
@@ -753,6 +761,10 @@ input, textarea, select {
 
 .intro-text-wrap {
   padding: 2rem 0;
+  min-width: 0;
+  width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .intro-statement {
@@ -2130,11 +2142,21 @@ input, textarea, select {
 
   .intro-text-wrap {
     padding: 1rem 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .intro-grid > * {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .body-text {
     font-size: 1rem;
     line-height: 1.7;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .eyebrow {
