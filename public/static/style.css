@@ -1089,11 +1089,16 @@ input, textarea, select {
   cursor: pointer;
 }
 
-/* Filter cards: GSAP manages show/hide — CSS reveal must not conflict */
+/* Filter cards: always visible — reveal animation skipped for cards */
 .filter-project-card.reveal {
-  opacity: 1;
-  transform: none;
-  transition: none;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+.filter-project-card.reveal.visible {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .filter-card-image {

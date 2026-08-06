@@ -1253,6 +1253,11 @@ window.addEventListener('DOMContentLoaded', function () {
           el.classList.contains('headline-md') || el.classList.contains('intro-statement') ||
           el.classList.contains('body-text')   || el.classList.contains('eyebrow') ||
           el.closest('.hero, #preloader')) return;
+      // Skip project/designer cards — they must be always visible
+      if (el.classList.contains('filter-project-card') || el.classList.contains('designer-card')) {
+        el.classList.add('visible');
+        return;
+      }
       observer.observe(el);
     });
 
@@ -1260,6 +1265,11 @@ window.addEventListener('DOMContentLoaded', function () {
     setTimeout(function() {
       document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
         if (el.closest('.hero, #preloader')) return;
+        // Always show project/designer cards immediately
+        if (el.classList.contains('filter-project-card') || el.classList.contains('designer-card')) {
+          el.classList.add('visible');
+          return;
+        }
         var rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight + 80) {
           el.classList.add('visible');
