@@ -94,10 +94,8 @@ export const renderer = jsxRenderer(({ children, title, description }) => {
   }
 })();
         `}} />
-        {/* Meta Pixel Code */}
+        {/* Meta Pixel Code - flat inline (nested script tags break JS parsing) */}
         <script dangerouslySetInnerHTML={{__html: `
-<!-- Meta Pixel Code -->
-<script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -108,12 +106,8 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '28447802321521588');
 fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=28447802321521588&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-        `}} />
+`}} />
+        <noscript dangerouslySetInnerHTML={{__html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=28447802321521588&ev=PageView&noscript=1" />`}} />
         {/* End Meta Pixel Code */}
       </head>
       <body>
