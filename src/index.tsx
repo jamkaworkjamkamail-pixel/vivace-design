@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { serveStatic } from 'hono/cloudflare-workers'
 import { renderer } from './renderer'
+import { sendCapiLead } from './capi'
 import { Nav, Footer, ProjectCard, InquirySection } from './components'
 import {
   designers, projects, categories,
@@ -1218,6 +1219,22 @@ app.post('/api/inquiries', async (c) => {
     success: true,
     message: 'Inquiry received. We will contact you within 48 hours.',
   })
+})
+
+/* ═══════════════════════════════════════════════════════════
+   API — CONVERSIONS API (server-side tracking)
+   Receives the SAME event_id the browser pixel used, so Meta
+   de-duplicates the pair instead of counting two conversions.
+═══════════════════════════════════════════════════════════ */
+app.post('/api/track', async (c) => {
+  let body: any = {}
+  try { body = await c.req.json() } catch { return c.json({ ok: false, error: 'Invalid JSON' }) }
+
+  // c.env carries the Cloudflare bindings/secrets (FB_ACCESS_TOKEN, FB_PIXEL_ID, FB_TEST_EVENT_CODE)
+  const result = await sendCapiLead((c.env || {}) as any, body, c.req.raw)
+
+  // Always 200: a tracking failure must never break the visitor's form submission.
+  return c.json(result)
 })
 
 /* ═══════════════════════════════════════════════════════════

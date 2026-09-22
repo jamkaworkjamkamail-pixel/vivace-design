@@ -1107,6 +1107,40 @@ window.addEventListener('DOMContentLoaded', function () {
         data.time_label      = timeMap[data.preferred_time] || data.preferred_time || '—';
         data.submitted_at    = new Date().toLocaleString('mn-MN', { timeZone: 'Asia/Ulaanbaatar' });
 
+        // ── Meta Pixel + Conversions API — de-duplicated with ONE event_id ──
+        // The browser pixel and the Worker both send event_name "Lead" with this
+        // exact event_id, so Meta merges them into a single conversion.
+        var eventId = 'lead.' + Date.now() + '.' + Math.random().toString(36).slice(2, 10);
+        var vdCookie = function(name) {
+          var m = document.cookie.match(new RegExp('(?:^|;\\s*)' + name + '=([^;]+)'));
+          return m ? decodeURIComponent(m[1]) : '';
+        };
+        try {
+          if (typeof fbq === 'function') {
+            fbq('track', 'Lead', { content_name: 'Inquiry form' }, { eventID: eventId });
+          }
+        } catch (_) {}
+        try {
+          fetch('/api/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            keepalive: true,
+            body: JSON.stringify({
+              event_name:     'Lead',
+              event_id:       eventId,
+              event_source_url: location.href,
+              name:           data.name,
+              email:          data.email,
+              phone:          data.phone,
+              category:       data.category,
+              budget:         data.budget,
+              preferred_time: data.preferred_time,
+              fbp:            vdCookie('_fbp'),
+              fbc:            vdCookie('_fbc')
+            })
+          }).catch(function() {});
+        } catch (_) {}
+
         var sent = false;
 
         // ── EmailJS ───────────────────────────────────────────
